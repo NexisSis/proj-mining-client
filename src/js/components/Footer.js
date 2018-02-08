@@ -6,8 +6,6 @@ import LastUpdate from "./Footer/LastUpdate";
 export default class Footer extends React.Component {
     render() {
         return (
-
-
             <footer class="footer">
                 <div class="cont">
                     <ul class="footer-info">
