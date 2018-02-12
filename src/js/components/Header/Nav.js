@@ -1,22 +1,42 @@
 import React from "react"
 import NavLink from "../NavLink"
 export default class Nav extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {isActive:1};
+        this.isActive = this.isActive.bind(this);
+    }
+     isActive(id){
+        return (this.state.isActive === id) ? 'active': '';
+     }
+     setActive(id){
+        this.state = {isActive:id};
+     }
     render(){
+        const nav = [
+            {class:'menu-buy',name:'Купить хешрейт',href:'/'},
+            {class:'menu-room',name:'Личный кабинет',href:'/'},
+            {class:'menu-history',name:'История',href:'history'},
+            {class:'menu-voucher',name:'Ваучер',href:'/'},
+            {class:'menu-referrals',name:'Рефералы',href:'/'},
+            {class:'menu-settings',name:'Настройки',href:'/'},
+            {class:'menu-help',name:'Помощь',href:'/'},
+            {class:'menu-wallet',name:'BTC Wallet',href:'/'},
+        ];
+        const tabs = nav.map(function(el,i){
+            return <li key={i}
+                       class={el.class + ' ' + this.isActive(i)} onClick={()=>this.setActive(i)}>
+                       <NavLink href={el.href} name={el.name} />
+                    </li>
+        },this);
         return(
             <div>
                 <ul class="menu">
-                    <li class="menu-buy"><NavLink href={'#'} name={'Купить хешрейт'}/></li>
-                    <li class="menu-room active"><NavLink href={'#'} name={'Личный кабинет'}/></li>
-                    <li class="menu-history"><NavLink href={'#'} name={'Личный История'}/></li>
-                    <li class="menu-voucher"><NavLink href={'#'} name={'Ваучер'}/></li>
-                    <li class="menu-referrals"><NavLink href={'#'} name={'Рефералы'}/></li>
-                    <li class="menu-settings"><NavLink href={'#'} name={'Настройки'}/></li>
-                    <li class="menu-help"><NavLink href={'#'} name={'Помощь'}/></li>
-                    <li class="menu-wallet"><NavLink href={'#'} name={'BTC Wallet'}/></li>
+                    {tabs}
                 </ul>
 
                 <ul class="entrance">
-                     <li class="entrance-enter"><NavLink href={'#'} name={'Выйти'}/></li>
+                     <li class={'entrance-enter '+this.isActive(nav.length)} onClick={()=>this.setActive(nav.length)}><NavLink href={'#'} name={'Выйти'} /></li>
                  </ul>
             </div>
 
