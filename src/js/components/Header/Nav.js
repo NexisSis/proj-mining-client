@@ -19,7 +19,7 @@ export default class Nav extends React.Component{
             {class:'menu-history',name:'История',href:'history'},
             {class:'menu-voucher',name:'Ваучер',href:'/'},
             {class:'menu-referrals',name:'Рефералы',href:'/'},
-            {class:'menu-settings',name:'Настройки',href:'/'},
+            {class:'menu-settings',name:'Настройки',href:'settings'},
             {class:'menu-help',name:'Помощь',href:'/'},
             {class:'menu-wallet',name:'BTC Wallet',href:'/'},
         ];

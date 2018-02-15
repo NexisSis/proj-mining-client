@@ -2,6 +2,17 @@ window.onload = function(){
     page.init();
     menu.init();
     graphics.init();
+    settings.init();
+     
+    $('.select select').styler({
+        selectSearch: false
+    });
+     
+    $('.history-box__cont').scrollbar({
+        "showArrows": true,
+        "scrollx": "advanced",
+        "scrolly": "advanced"
+    });
 };
 
 
@@ -125,5 +136,28 @@ graphics.events = function(){
             $(this).parents(graphics.cont).find(graphics.box).slideDown(graphics.tim);
             $(this).parents(graphics.cont).find(graphics.buttBox).fadeIn(graphics.tim);
         }
+    }); 
+};
+
+
+/* settings -----------------------------------*/
+var settings = {
+    active: 'active',
+    block: '.settings-menu',
+    button: '.settings-menu li span, .settings-menu li a'
+};
+
+settings.init = function(){
+
+    this.events();
+};
+
+settings.events = function(){
+    
+    $('body').on('click', this.button, function(event){
+
+        $(this).parents(settings.block).find('li').removeClass(settings.active);
+        $(this).parents('li').addClass(settings.active);
+        
     }); 
 };

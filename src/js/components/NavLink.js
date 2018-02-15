@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default class NavLink extends React.Component {
     render() {
         return (
-             <Link activeClassName="active" to={this.props.href} class={this.props.classNavName}><span>{this.props.name}</span></Link>
+             <Link to={this.props.href} class={this.props.classNavName}><span>{this.props.name}</span></Link>
         )
     }
 }
