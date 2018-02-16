@@ -1,10 +1,10 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import App from "./pages/App"
-import "../css/styles.css"
-import "../css/libs.css"
-import "../../public/js/main"
-import "../../public/js/libs.min"
+import App from "./main/App"
+import "../../public/js/main/main"
+import "../../public/js/main/libs.min"
+import "../css/main/styles.css"
+
 import { BrowserRouter } from 'react-router-dom';
 
 const app = document.getElementById('app')
