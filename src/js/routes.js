@@ -4,6 +4,7 @@ import Header from "./cabinet/components/Header"
 import Cabinet from "./cabinet/pages/Cabinet"
 import History from "./cabinet/pages/History"
 import Settings from "./cabinet/pages/Settings"
+import CabinetAppMainRoute from "../js/cabinet/pages/App"
 import {Switch,Route} from 'react-router-dom'
 
 export default class Main extends React.Component{
@@ -17,6 +18,7 @@ export default class Main extends React.Component{
                     <Route exact path='/cabinet' component={Cabinet}/>
                     <Route exact path='/history' component={History}/>
                     <Route exact path='/settings' component={Settings}/>
+                    <Route path='/cabinet' component={CabinetAppMainRoute}/>
                 </Switch>
             </div>
 
