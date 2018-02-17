@@ -1,0 +1,1 @@
+export {Main as Cabinet} from "app/pages/Cabinet/Panel/index"
