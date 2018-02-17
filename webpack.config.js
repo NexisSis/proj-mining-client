@@ -1,43 +1,93 @@
-var debug = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
-var path = require('path');
+const path = require("path");
+const webpack = require("webpack");
+const I18nPlugin = require("i18n-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+
+var development = process.env.NODE_ENV !== "production";
+var languages = [];
+
+process.traceDeprecation = true;
 
 module.exports = {
-    context: path.join(__dirname, "src"),
-    devtool: debug ? "inline-sourcemap" : false,
-    entry: "./js/client.js",
-    publicPath: '/',
+    context: __dirname,
+    output: {
+        path: path.resolve(__dirname, "build"),
+        filename: "bundle.js"
+    },
+    devtool: development ? "inline-source-map" : false,
+    entry: "./app/index.js",
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015', 'stage-0'],
-                    plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            ["babel-preset-react"], // ['presetName',{optionName:value}]
+                            ["babel-preset-env"],
+                            ["stage-0"]
+                        ],
+                        plugins: [
+                            "react-html-attrs",
+                            "transform-decorators-legacy",
+                            "transform-class-properties",
+                            "transform-react-jsx",
+                            "transform-react-constant-elements"
+                        ]
+                    }
                 }
+
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+                    "style-loader",
+                    "css-loader"
+                ]
             },
             {
-                test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/,
-                loader: 'file-loader'
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                use: [{
+                    loader: "file-loader",
+                    options: {
+                        name: "[path][name].[ext]"
+                    }
+
+                }]
+            },
+            {
+                test: /\.json$/,
+                use: "json-loader"
             }
         ]
     },
-    output: {
-        path: __dirname + "/src/",
-        filename: "client.min.js"
+    resolve: {
+        extensions: [" ",".js",".jsx"],
+        alias: {
+            "assets": path.resolve(__dirname,"assets"),
+            "config": path.resolve(__dirname,"config"),
+            "app": path.resolve(__dirname,"app")
+        }
     },
     devServer: {
+        contentBase: "./",
         historyApiFallback: true,
     },
-    plugins: debug ? [] : [
-        new webpack.optimize.DedupePlugin(),
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+        }),
+        // new webpack.optimize.DedupePlugin(), WARNING in DedupePlugin: This plugin was removed from webpack. Remove it from your configuration.
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+        new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
+        new I18nPlugin(languages),
+        new CompressionPlugin(),
+        new CleanWebpackPlugin(["build"])
     ],
+    externals: {
+        "api": JSON.stringify(development ? require("./config/development/api.json") : require("./config/production/api.json"))
+    }
 };
