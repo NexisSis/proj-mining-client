@@ -1,12 +1,7 @@
 import React from "react";
-import HeaderTitle from "app/components/Html/HeaderTitle";
-import Notification from "app/components/Cabinet/Notification";
-import HashRate from "app/components/Cabinet/HashRate";
-import HashGraph from "app/components/Cabinet/HashGraph";
 
-class Cabinet extends React.Component {
+class Main extends React.Component {
     render() {
-        const errorText = "<p>Внимание! У Вас нет купленного хэшрейта, необходимо купить хэшрейт <a href=\"javascript:void(0)\">SHA-256</a> или <a href=\"javascript:void(0)\">Scrypt</a> хэшрейт</p>";
         return (
             <div class="content">
                 <HeaderTitle name={"Личный кабинет"}/>
@@ -39,9 +34,8 @@ class Cabinet extends React.Component {
                 </div>
                 <div className="hFooter"></div>
             </div>
-
-
-
         );
     }
 }
+
+export {Main};

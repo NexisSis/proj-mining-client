@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const I18nPlugin = require("i18n-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var development = process.env.NODE_ENV !== "production";
 var languages = [];
@@ -43,10 +44,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    "style-loader",
-                    "css-loader"
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             },
             {
                 test: /\.(png|woff|woff2|eot|ttf|svg)$/,
@@ -65,7 +66,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [" ",".js",".jsx"],
+        extensions: [" ",".js",".jsx",".css"],
         alias: {
             "assets": path.resolve(__dirname,"assets"),
             "config": path.resolve(__dirname,"config"),
@@ -80,6 +81,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
         }),
+        new ExtractTextPlugin("assets/css/style.css"),
         // new webpack.optimize.DedupePlugin(), WARNING in DedupePlugin: This plugin was removed from webpack. Remove it from your configuration.
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),

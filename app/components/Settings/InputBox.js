@@ -1,17 +1,18 @@
-import React from "react"
-export default class InputBox extends React.Component {
-render() {
+import React from "react";
+
+class InputBox extends React.Component {
+    render() {
         let userInputType;
-        if(this.props.isAvatar){
-            userInputType=(
+        if (this.props.isAvatar) {
+            userInputType = (
                 <div class="addAvatar">
                     <div class="addAvatar__button"></div>
                 </div>
             );
-        }else if(this.props.isBirth){
+        } else if (this.props.isBirth) {
 
 
-            userInputType=(
+            userInputType = (
                 <div class="dateBirth">
                     <div class="dateBirth__box dateBirth__box--month">
 
@@ -34,7 +35,7 @@ render() {
 
                     </div>
                     <div class="dateBirth__box dateBirth__box--day">
-                        <input class="inputText" type="text" />
+                        <input class="inputText" type="text"/>
                     </div>
                     <div class="dateBirth__box dateBirth__box--year">
 
@@ -81,13 +82,13 @@ render() {
                 </div>
             );
         }
-        else{
-            userInputType=(
-               <input class="inputText" type="text" />
+        else {
+            userInputType = (
+                <input class="inputText" type="text"/>
             );
         }
         return (
-            <div class={'setProfile__box'} >
+            <div class={'setProfile__box'}>
                 <div class="setProfile__info"><span>{this.props.name}</span></div>
                 <div class="setProfile__value">
                     {userInputType}
@@ -97,3 +98,5 @@ render() {
         );
     }
 }
+
+export {InputBox};

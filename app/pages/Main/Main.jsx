@@ -1,10 +1,12 @@
 import React from "react";
-import Panel from "app/pages/Cabinet";
-import History from "app/pages/History";
-import Settings from "app/pages/Settings";
-import Footer from "app/components/Html/Footer";
-import Header from "app/components/Html/Header";
 import {Switch, Route} from "react-router-dom";
+import {Landing} from "app/pages";
+import {NoMatch} from "app/pages";
+import {Register} from "app/pages";
+import {Login} from "app/pages";
+import {Header} from "app/pages/Main";
+import {Footer} from "app/pages/Main";
+import {ContactUs} from "app/pages";
 
 class Main extends React.Component {
     constructor(props) {
@@ -14,16 +16,16 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <Header/>
-                "Main component"
-                {/*<Switch>*/}
-                    {/*<Route exact path="/panel" component={Panel}/>*/}
-                    {/*<Route path="/history" component={History}/>*/}
-                    {/*<Route path="/settings" component={Settings}/>*/}
-                {/*</Switch>*/}
+                <Header />
+                <Switch>
+                    <Route exact path="/" component={Landing}/>
+                    <Route path={"/login"} component={Login}/>
+                    <Route path={"/register"} component={Register}/>
+                    <Route path={"/contact-us"} component={ContactUs}/>
+                    <Route component={NoMatch}/>
+                </Switch>
                 <Footer/>
             </div>
-
         );
     }
 }
