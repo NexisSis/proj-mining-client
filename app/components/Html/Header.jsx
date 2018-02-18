@@ -1,0 +1,31 @@
+import React from "react";
+import Nav from "app/components/Header/Nav";
+import User from "app/components/Header/User";
+
+class Header extends React.Component {
+    constructor() {
+        super();
+    }
+
+    render() {
+        return (
+            <header class="header">
+                <div class="logo-block">
+                    <a class="logo" href="javascript:void(0)">C<span>loudMining</span></a>
+                </div>
+                <User/>
+                <div class="mobileMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="header-block">
+                    <Nav/>
+                </div>
+            </header>
+        );
+    }
+}
+
+export {Header};
