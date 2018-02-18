@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route} from "react-router-dom";
+import {Route,Switch} from "react-router-dom";
 import {Landing} from "app/pages";
 import {NoMatch} from "app/pages";
 import {Register} from "app/pages";
