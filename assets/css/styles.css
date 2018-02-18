@@ -62,7 +62,7 @@
   border: none;
 }
 .select .jq-selectbox__trigger-arrow {
-  background-image: url("assets/images/icons-arrows.png");
+  background-image: url("/assets/images/icons-arrows.png");
   background-position: -200px 0px;
   background-repeat: no-repeat;
   -webkit-transition: 0.2s all;
@@ -266,7 +266,7 @@
   left: 2px;
   width: 11px;
   height: 7px;
-  background-image: url('../../assets/images/icons-arrows.png');
+  background-image: url('/assets/images/icons-arrows.png');
   background-position: -200px 0px;
   background-repeat: no-repeat;
   content: '';
@@ -293,7 +293,7 @@
   left: 3px;
   width: 11px;
   height: 7px;
-  background-image: url('../../assets/images/icons-arrows.png');
+  background-image: url('/assets/images/icons-arrows.png');
   background-position: -200px 0px;
   background-repeat: no-repeat;
   content: '';
@@ -381,15 +381,21 @@
 }
 @font-face {
   font-family: 'Calibri';
-  src: url('../../assets/fonts/Calibri-Regular.eot');
-  src: url('../../assets/fonts/Calibri-Regular.eot?#iefix') format('embedded-opentype'), url('../../assets/fonts/Calibri-Regular.woff') format('woff'), url('../../assets/fonts/Calibri-Regular.ttf') format('truetype');
+  src: url('/assets/fonts/Calibri-Regular.eot');
+  src:
+          url('/assets/fonts/Calibri-Regular.eot?#iefix') format('embedded-opentype'),
+          url('/assets/fonts/Calibri-Regular.woff') format('woff'),
+          url('/assets/fonts/Calibri-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: 'Calibri';
-  src: url('../../assets/fonts/Calibri-Bold.eot');
-  src: url('../../assets/fonts/Calibri-Bold.eot?#iefix') format('embedded-opentype'), url('../../assets/fonts/Calibri-Bold.woff') format('woff'), url('../../assets/fonts/Calibri-Bold.ttf') format('truetype');
+  src: url('/assets/fonts/Calibri-Bold.eot');
+  src:
+          url('/assets/fonts/Calibri-Bold.eot?#iefix') format('embedded-opentype'),
+          url('/assets/fonts/Calibri-Bold.woff') format('woff'),
+          url('/assets/fonts/Calibri-Bold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
@@ -589,7 +595,7 @@ sup {
   display: inline-block;
   vertical-align: top;
   text-align: left;
-  background-image: url('../../assets/images/icons-arrows.png');
+  background-image: url('/assets/images/icons-arrows.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   -webkit-transition: 0.1s background-color;
@@ -693,7 +699,7 @@ sup {
   -ms-transition: 0.1s transform;
   -o-transition: 0.1s transform;
   transition: 0.1s transform;
-  background-image: url('../../assets/images/icons-arrows.png');
+  background-image: url('/assets/images/icons-arrows.png');
   background-position: -350px 0px;
   background-repeat: no-repeat;
   position: absolute;
