@@ -1,16 +1,19 @@
 import React from "react";
+import {Notification} from "app/components/Cabinet/Notification";
+import {HashRate} from "app/components/Cabinet/HashRate";
+import {HashGraph} from "app/components/Cabinet/HashGraph";
 
 class Main extends React.Component {
     render() {
         return (
             <div class="content">
-                <HeaderTitle name={"Личный кабинет"}/>
+                {/*<HeaderTitle name={"Личный кабинет"}/>*/}
                 <div class="informers-block">
                     <div class="cont">
-                        <Notification type={"info"} text={errorText}/>
-                        <Notification type={"yellow"} text={errorText}/>
-                        <Notification type={"red"} text={errorText}/>
-                        <Notification type={"green"} text={errorText}/>
+                        <Notification type={"info"} text={"Info text"}/>
+                        <Notification type={"yellow"} text={"Warning text"}/>
+                        <Notification type={"red"} text={"error text"}/>
+                        <Notification type={"green"} text={"Success text"}/>
                     </div>
                 </div>
                 <div class="technical-offers">
