@@ -15,4 +15,4 @@ const store = createStore(
     applyMiddleware(middleware)
 );
 
-export {store,history};
+export {store, history};
