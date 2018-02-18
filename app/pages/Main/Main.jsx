@@ -6,10 +6,9 @@ import Footer from "app/components/Html/Footer";
 import Header from "app/components/Html/Header";
 import {Switch, Route} from "react-router-dom";
 
-
 class Main extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     render() {

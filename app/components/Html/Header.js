@@ -1,12 +1,14 @@
-import React from "react"
-import Nav from "app/components/Header/Nav"
-import User from "app/components/Header/User"
-export default class Header extends React.Component{
-    constructor(){
+import React from "react";
+import Nav from "app/components/Header/Nav";
+import User from "app/components/Header/User";
+
+export default class Header extends React.Component {
+    constructor() {
         super();
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <header class="header">
                 <div class="logo-block">
                     <a class="logo" href="javascript:void(0)">C<span>loudMining</span></a>
@@ -19,9 +21,9 @@ export default class Header extends React.Component{
                 </div>
 
                 <div class="header-block">
-                   <Nav />
+                    <Nav/>
                 </div>
             </header>
-        )
+        );
     }
 }

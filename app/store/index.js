@@ -1,16 +1,18 @@
-import { createStore, combineReducers } from "redux";
-import { syncHistoryWithStore, routerReducer } from "react-router-redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { syncHistoryWithStore, routerReducer,routerMiddleware } from "react-router-redux";
 import {browserHistory} from "react-router";
+import {createBrowserHistory as createHistory} from 'history';
 
-import * as reducers from "./reducers";
+import {alert as reducers} from "./reducers";
 
+const history = createHistory();
+const middleware = routerMiddleware(history);
 const store = createStore(
     combineReducers({
         ...reducers,
         routing: routerReducer
-    })
+    }),
+    applyMiddleware(middleware)
 );
-
-const history = syncHistoryWithStore(browserHistory,store);
 
 export {store,history};
