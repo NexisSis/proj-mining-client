@@ -62,7 +62,7 @@
   border: none;
 }
 .select .jq-selectbox__trigger-arrow {
-  background-image: url('../../assets/images/icons-arrows.png');
+  background-image: url("assets/images/icons-arrows.png");
   background-position: -200px 0px;
   background-repeat: no-repeat;
   -webkit-transition: 0.2s all;
