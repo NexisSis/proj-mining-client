@@ -7,7 +7,7 @@ import {store,history} from "app/store";
 
 import {Main} from "app/pages";
 
-class Container extends React.Component{
+class Container extends React.Component {
 
     constructor(props){
         super(props);
@@ -18,7 +18,7 @@ class Container extends React.Component{
             <IntlProvider locale="en">
                 <Provider store={store}>
                     <ConnectedRouter history={history}>
-                        <Route exact path="/" component={Main}/>
+                        <Route path="/" component={Main}/>
                     </ConnectedRouter>
                 </Provider>
             </IntlProvider>
