@@ -137,7 +137,9 @@ module.exports = {
     },
     devServer: {
         contentBase: "./",
+        compress: true,
         historyApiFallback: true,
+        port: 8081
     },
     plugins: [
         new webpack.ProvidePlugin({

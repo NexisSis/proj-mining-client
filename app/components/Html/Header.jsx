@@ -1,6 +1,7 @@
 import React from "react";
-import Nav from "app/components/Header/Nav";
-import User from "app/components/Header/User";
+import {Nav} from "app/components/Header/Nav";
+import {User} from "app/components/Header/User";
+import {Link} from "react-router-dom";
 
 class Header extends React.Component {
     constructor() {
@@ -9,21 +10,23 @@ class Header extends React.Component {
 
     render() {
         return (
-            <header class="header">
-                <div class="logo-block">
-                    <a class="logo" href="javascript:void(0)">C<span>loudMining</span></a>
-                </div>
-                <User/>
-                <div class="mobileMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+            <div>
+                <header class="header">
+                    <div class="logo-block">
+                        <Link class="logo" to="/">C<span>loudMining</span></Link>
+                    </div>
+                    <User />
+                    <div class="mobileMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
 
-                <div class="header-block">
-                    <Nav/>
-                </div>
-            </header>
+                    <div class="header-block">
+                        <Nav/>
+                    </div>
+                </header>
+            </div>
         );
     }
 }

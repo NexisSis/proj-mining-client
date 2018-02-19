@@ -98,7 +98,7 @@ class Footer extends React.Component {
                     </div>
 
                 </footer>
-                <div class="modal modalCenter fade" id="login" tabindex="-1" role="dialog"
+                <div class="modal modalCenter fade" id="login" tabIndex="-1" role="dialog"
                      aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">

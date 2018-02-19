@@ -1,4 +1,5 @@
 import React from "react";
+import {Header} from "app/components/Html/Header";
 
 class Landing extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class Landing extends React.Component {
     render() {
         return (
             <div>
+                <Header isIndex='true' name={'Облачный майнинг'}/>
                 <div class="startNow">
 
                     <div class="container-fluid">

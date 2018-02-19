@@ -1,17 +1,22 @@
 import React from "react";
 
-export default class User extends React.Component {
+class User extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
-            <div class="user">
-                <div class="user__img">
+            <div className="user">
+                <div className="user__img">
                     <a href="javascript:void(0)">
-                        <img src="assets/pictures/user/user.jpg" alt="user"/>
+                        <img className="titleBox--main" alt="user"/>
                     </a>
                 </div>
-                <ul class="user__info">
+                <ul className="user__info">
                     <li>
-                        <a href="javascript:void(0)">
+                        <a href="mailto:javascript:void(0)">
                             cloudminer@mail.com
                         </a>
                     </li>
@@ -20,5 +25,7 @@ export default class User extends React.Component {
         );
     }
 }
+
+export {User};
 
 
