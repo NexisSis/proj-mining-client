@@ -16,7 +16,6 @@ class Main extends React.Component {
     }
 
     render() {
-        console.log("Main page");
         return (
             <div>
                 <Header/>

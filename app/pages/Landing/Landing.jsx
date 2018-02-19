@@ -6,7 +6,6 @@ class Landing extends React.Component {
     }
 
     render() {
-        console.log("Landing page");
         return (
             <div>
                 <div class="startNow">

@@ -6,7 +6,7 @@ class Footer extends React.Component {
     }
 
     render() {
-        console.log("Footer render");
+
         return (
             <div>
                 <footer class="footer">
@@ -46,7 +46,7 @@ class Footer extends React.Component {
                                 <ul class="footer-menu footer-menu--contacts">
                                     <li class="ic-email"><a href="javascript:void(0)">info@hashflare.io</a></li>
                                     <li class="ic-phone"><a href="javascript:void(0)">+44 406 125 5054</a></li>
-                                    <li class="ic-location"><span>Tartu mnt 43 <br/> Tallinn 10128, Estonia</span></li>
+                                    <li class="ic-location"><span>Tartu mnt 43 <br /> Tallinn 10128, Estonia</span></li>
                                 </ul>
 
                             </div>
@@ -78,8 +78,8 @@ class Footer extends React.Component {
                                     <div class="subscription">
                                         <span class="subscription__title">Подпишитесь на специальные предложения:</span>
                                         <div class="subscription__cont">
-                                            <input class="inputText" type="text" placeholder="Ваша эл. почта"/>
-                                            <input class="button button--orangeLight" type="submit" value="Отправить"/>
+                                            <input class="inputText" type="text" placeholder="Ваша эл. почта" />
+                                            <input class="button button--orangeLight" type="submit" value="Отправить" />
                                         </div>
                                     </div>
 
@@ -98,7 +98,7 @@ class Footer extends React.Component {
                     </div>
 
                 </footer>
-                <div class="modal modalCenter fade" id="login" tabIndex="-1" role="dialog"
+                <div class="modal modalCenter fade" id="login" tabindex="-1" role="dialog"
                      aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -111,14 +111,14 @@ class Footer extends React.Component {
                                     <div class="reg-box">
                                         <span class="reg-box__title">Эл. почта</span>
                                         <div class="reg-box__value">
-                                            <input class="inputText" type="text" placeholder="cloudminer@mail.com"/>
+                                            <input class="inputText" type="text" placeholder="cloudminer@mail.com" />
                                         </div>
                                     </div>
 
                                     <div class="reg-box">
                                         <span class="reg-box__title">Пароль</span>
                                         <div class="reg-box__value has-error">
-                                            <input class="inputText inputError" type="password"/>
+                                            <input class="inputText inputError" type="password" />
                                             <span class="has-error__text">Введите пароль</span>
                                         </div>
                                     </div>
@@ -140,7 +140,7 @@ class Footer extends React.Component {
 
                                     <div class="reg-box">
 
-                                        <input class="button button--orangeBig" type="submit" value="Войти"/>
+                                        <input class="button button--orangeBig" type="submit" value="Войти" />
 
                                     </div>
 

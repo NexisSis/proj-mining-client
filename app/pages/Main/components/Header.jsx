@@ -22,7 +22,7 @@ class Header extends React.Component {
 
                             <div class="col-lg-8 col-md-8">
 
-                                <a class="logo" href="javascript:void(0)"></a>
+                                <Link class="logo" to="/"/>
 
                                 <ul class="menu">
                                     <li><a href="javascript:void(0)">Возможности</a></li>
