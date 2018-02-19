@@ -1,5 +1,7 @@
 import React from "react";
 import {Header} from "app/components/Html/Header";
+import about from "app/pages/Main/assets/images/pictures/about-us.jpg";
+import monitoring from "app/pages/Main/assets/images/pictures/monitoring.jpg";
 
 class Landing extends React.Component {
     constructor(props) {
@@ -89,7 +91,7 @@ class Landing extends React.Component {
 
                                 <div class="contImg">
                                     <a href="javascript:void(0)">
-                                        {/*<img src={about} alt='about'/>*/}
+                                        <img src={about} alt='about'/>
                                     </a>
                                     <div class="contImg__play"></div>
                                 </div>
@@ -231,7 +233,7 @@ class Landing extends React.Component {
 
                                 <div class="contImg">
                                     <a href="javascript:void(0)">
-                                        {/*<img src={monitoring} alt="img"/>*/}
+                                        <img src={monitoring} alt="img"/>
                                     </a>
                                 </div>
 

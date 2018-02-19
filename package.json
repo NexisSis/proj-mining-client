@@ -66,6 +66,7 @@
   "scripts": {
     "babel": "babel --presets es2015 app/index.jsx -o build/bundle.js",
     "webpack:build": "webpack",
+    "webpack:build-debug": "webpack --watch --progress --color",
     "webpack:run": "webpack-dev-server --watch --progress --inline --hot",
     "debug": "react-scripts",
     "start": "react-scripts start",
