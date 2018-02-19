@@ -57,7 +57,7 @@ module.exports = {
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader",
-                    publicPath: path.resolve(__dirname, "build/assets/css")
+                    // publicPath: development ? "http://localhost:8080" : "http://46.51.144.173"
                 })
             },
             {
@@ -81,19 +81,42 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
+                test: /\.(png|gif|jpg|jpeg|webp)$/,
                 use: [
+                    // {
+                    //     loader: "url-loader",
+                    //     options: {
+                    //         limit: 50000,
+                    //         mimetype: "application/octet-stream",
+                    //         fallback: "file-loader"
+                    //     }
+                    // },
                     {
-                        loader: "url-loader",
+                        loader: "file-loader",
                         options: {
-                            limit: 25000,
+                            name: "assets/images/[name].[ext]?[hash]",
+                            publicPath: "/build/"
                         }
+                    }
 
-                    },
+                ]
+            },
+            {
+                test: /\.(eot|woff(2)?|ttf|svg)$/,
+                use: [
+                    // {
+                    //     loader: "url-loader",
+                    //     options: {
+                    //         limit: 10000,
+                    //         mimetype: "application/octet-stream",
+                    //         fallback: "file-loader"
+                    //     }
+                    // },
                     {
-                        loader: 'file-loader',
+                        loader: "file-loader",
                         options: {
-                            name: "[path][name].[hash].[ext]"
+                            name:"assets/fonts/[name].[ext]?[hash]",
+                            publicPath: "/build/"
                         }
                     }
                 ]
