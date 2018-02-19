@@ -1,5 +1,4 @@
 import React from "react";
-import {Header} from "app/components/Html/Header";
 import about from "app/pages/Main/assets/images/pictures/about-us.jpg";
 import monitoring from "app/pages/Main/assets/images/pictures/monitoring.jpg";
 
@@ -11,7 +10,6 @@ class Landing extends React.Component {
     render() {
         return (
             <div>
-                <Header isIndex='true' name={'Облачный майнинг'}/>
                 <div class="startNow">
 
                     <div class="container-fluid">
