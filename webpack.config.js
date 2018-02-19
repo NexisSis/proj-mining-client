@@ -144,6 +144,7 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             $: "jquery",
+            jQuery: "jquery",
         }),
         new ExtractTextPlugin("assets/css/style.css"),
         // new webpack.optimize.DedupePlugin(), WARNING in DedupePlugin: This plugin was removed from webpack. Remove it from your configuration.
