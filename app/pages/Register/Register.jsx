@@ -5,6 +5,10 @@ class Register extends React.Component {
         super(props);
     }
 
+    componentDidMount(){
+        $('.selectpicker').selectpicker();
+    }
+
     render() {
         return (
             <div>
