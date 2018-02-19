@@ -7429,7 +7429,6 @@ button.button--orangeBig {
   background-position: 0px 0px;
   background-repeat: no-repeat;
   width: 547px;
-  right: -10px;
 }
 @media (max-width: 1500px) {
   .header-clouds:after {

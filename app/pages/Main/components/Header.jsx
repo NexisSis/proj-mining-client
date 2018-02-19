@@ -1,19 +1,57 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-class Header extends React.Component {
 
+class Header extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            path: props.path,
+            isIndex: true,
+            name: 'Облачный майнинг'
+        };
+    }
+
+    componentWillMount() {
+        this.resolvePath(this.props.path);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.resolvePath(nextProps.path);
+    }
+
+    resolvePath(path){
+        switch(path){
+            case '/': {
+                this.setState({
+                    path:path,
+                    isIndex:true,
+                    name:'Облачный майнинг'
+                });
+                break;
+            }
+            case '/register': {
+                this.setState({
+                    path: path,
+                    isIndex:false,
+                    name:'Регистрация'
+                });
+                break;
+            }
+
+        }
+    }
 
     render() {
         let clouds = '';
-        if (this.props.isIndex) {
+        if (this.state.isIndex) {
             clouds = (
                 <div class="header-clouds"></div>
             );
         }
         return (
             <div>
-                <header class={this.props.isIndex ? 'header header--home' : 'header'}>
+                <header class={this.state.isIndex ? 'header header--home' : 'header'}>
                     {clouds}
 
                     <div class="header-cont container-fluid">
@@ -64,7 +102,7 @@ class Header extends React.Component {
                                     </div>
 
                                     <ul class="reg-menu">
-                                        <li><Link to={"login"} class="button">Войти</Link></li>
+                                        <li><a class="button" href="#" data-toggle="modal" data-target="#login">Войти</a></li>
                                         <li><Link to={'register'} class={'button button--orange'}>Регистрация</Link>
                                         </li>
                                     </ul>
@@ -79,12 +117,13 @@ class Header extends React.Component {
 
                     <div class="header-title container-fluid">
 
-                        <div class={this.props.isIndex ? 'titleBox titleBox--main' : 'titleBox titleBox--alignment'}>
-                            <h1>{this.props.name}</h1></div>
+                        <div class={this.state.isIndex ? 'titleBox titleBox--main' : 'titleBox titleBox--alignment'}>
+                            <h1>{this.state.name}</h1></div>
 
                     </div>
 
                 </header>
+
             </div>
         );
     }

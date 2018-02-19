@@ -9,16 +9,17 @@ import {Footer} from "app/pages/Main";
 import {ContactUs} from "app/pages/ContactUs";
 import "./assets/js/main";
 import "./assets/css/styles.css";
-
+import Modal from 'app/pages/Main/components/Modal';
 class Main extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
+
         return (
             <div>
-                <Header/>
+                <Header path={this.props.location.pathname}/>
                 <Switch>
                     <Route exact path={"/"} component={Landing}/>
                     <Route path={"/login"} component={Login}/>
@@ -26,6 +27,7 @@ class Main extends React.Component {
                     <Route path={"/contact-us"} component={ContactUs}/>
                     <Route component={NoMatch}/>
                 </Switch>
+                <Modal/>
                 <Footer/>
             </div>
         );
