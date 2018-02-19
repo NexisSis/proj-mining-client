@@ -1,8 +1,12 @@
 import React from "react";
 
 class Footer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
+        console.log("Footer render");
         return (
             <div>
                 <footer class="footer">

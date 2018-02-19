@@ -2,29 +2,32 @@ import React from "react";
 import {IntlProvider} from "react-intl";
 import {Provider} from "react-redux";
 import {Route} from "react-router";
-import {ConnectedRouter} from "react-router-redux";
-import {store,history} from "app/store";
+import {BrowserRouter as Router} from "react-router-dom";
+import {store, history} from "app/store";
 
 import {Main} from "app/pages";
+import {ConnectedRouter} from "react-router-redux";
 
 class Container extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
-    render(){
+    render() {
         return (
             <IntlProvider locale="en">
                 <Provider store={store}>
                     <ConnectedRouter history={history}>
-                        <Route path="/" component={Main}/>
+                        <Router>
+                            <Route path={"/"} component={Main}/>
+                        </Router>
                     </ConnectedRouter>
                 </Provider>
             </IntlProvider>
-        );
+    );
     }
 
-}
+    }
 
-export {Container};
+    export {Container};

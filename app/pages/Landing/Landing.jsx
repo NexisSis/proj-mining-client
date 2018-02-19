@@ -1,7 +1,12 @@
 import React from "react";
 
 class Landing extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+        console.log("Landing page");
         return (
             <div>
                 <div class="startNow">

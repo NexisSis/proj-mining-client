@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 
 class Header extends React.Component {
 
+
     render() {
         let clouds = '';
         if (this.props.isIndex) {
@@ -63,9 +64,8 @@ class Header extends React.Component {
                                     </div>
 
                                     <ul class="reg-menu">
-                                        <li><a class="button" href="javascript:void(0)" data-toggle="modal"
-                                               data-target="#login">Войти</a></li>
-                                        <li><Link to={'registration'} class={'button button--orange'}>Регистрация</Link>
+                                        <li><Link to={"login"} class="button">Войти</Link></li>
+                                        <li><Link to={'register'} class={'button button--orange'}>Регистрация</Link>
                                         </li>
                                     </ul>
 

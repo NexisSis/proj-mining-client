@@ -42,23 +42,61 @@ module.exports = {
                 }
 
             },
+            // {
+            //     test: require.resolve('react'),
+            //     use: {
+            //         loader: 'imports-loader',
+            //         options: {
+            //             shim: 'es5-shim/es5-shim',
+            //             sham: 'es5-shim/es5-sham',
+            //         },
+            //     }
+            // },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader",
-                    publicPath: path.resolve(__dirname,"build")
+                    publicPath: path.resolve(__dirname, "build/assets/css")
                 })
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                test: /\.(scss)$/,
                 use: [{
-                    loader: "file-loader",
+                    loader: 'style-loader', // inject CSS to page
+                }, {
+                    loader: 'css-loader', // translates CSS into CommonJS modules
+                }, {
+                    loader: 'postcss-loader', // Run post css actions
                     options: {
-                        name: "[path][name].[ext]"
+                        plugins: function () { // post css plugins, can be exported to postcss.config.js
+                            return [
+                                require('precss'),
+                                require('autoprefixer')
+                            ];
+                        }
                     }
-
+                }, {
+                    loader: 'sass-loader' // compiles Sass to CSS
                 }]
+            },
+            {
+                test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 25000,
+                        }
+
+                    },
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "[path][name].[hash].[ext]"
+                        }
+                    }
+                ]
             },
             {
                 test: /\.json$/,
@@ -67,11 +105,11 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [" ",".js",".jsx",".css"],
+        extensions: [" ", ".js", ".jsx"],
         alias: {
-            "assets": path.resolve(__dirname,"assets"),
-            "config": path.resolve(__dirname,"config"),
-            "app": path.resolve(__dirname,"app")
+            "assets": path.resolve(__dirname, "assets"),
+            "config": path.resolve(__dirname, "config"),
+            "app": path.resolve(__dirname, "app")
         }
     },
     devServer: {

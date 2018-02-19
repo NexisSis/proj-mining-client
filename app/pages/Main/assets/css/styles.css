@@ -252,6 +252,11 @@ th {
     border: 1px solid #ddd !important;
   }
 }
+/*@font-face {*/
+  /*font-family: 'Glyphicons Halflings';*/
+  /*src: url('../fonts/glyphicons-halflings-regular.eot');*/
+  /*src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');*/
+/*}*/
 .glyphicon {
   position: relative;
   top: 1px;
@@ -6588,7 +6593,7 @@ select.selectpicker {
   -ms-transition: 0.2s all;
   -o-transition: 0.2s all;
   transition: 0.2s all;
-  background-image: url('../../../public/images/icons-arrows.png');
+  background-image: url('../images/icons-arrows.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   position: absolute;
@@ -6657,17 +6662,24 @@ select.selectpicker {
 .b {
   border: 1px solid red;
 }
+/*@font-face {*/
+  /*font-family: 'Calibri';*/
+  /*src: url('../fonts/Calibri-Light.eot');*/
+  /*src: url('../fonts/Calibri-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/Calibri-Light.woff') format('woff'), url('../fonts/Calibri-Light.ttf') format('truetype');*/
+  /*font-weight: 300;*/
+  /*font-style: normal;*/
+/*}*/
 @font-face {
   font-family: 'Calibri';
-  src: url('../../../public/fonts/Calibri-Regular.eot');
-  src: url('../../../public/fonts/Calibri-Regular.eot?#iefix') format('embedded-opentype'), url('../../../public/fonts/Calibri-Regular.woff') format('woff'), url('../../../public/fonts/Calibri-Regular.ttf') format('truetype');
+  src: url('../fonts/Calibri-Regular.eot');
+  src: url('../fonts/Calibri-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Calibri-Regular.woff') format('woff'), url('../fonts/Calibri-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: 'Calibri';
-  src: url('../../../public/fonts/Calibri-Bold.eot');
-  src: url('../../../public/fonts/Calibri-Bold.eot?#iefix') format('embedded-opentype'), url('../../../public/fonts/Calibri-Bold.woff') format('woff'), url('../../../public/fonts/Calibri-Bold.ttf') format('truetype');
+  src: url('../fonts/Calibri-Bold.eot');
+  src: url('../fonts/Calibri-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Calibri-Bold.woff') format('woff'), url('../fonts/Calibri-Bold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
@@ -6883,7 +6895,7 @@ form {
   }
 }
 .titleBox--main:before {
-  background-image: url('../../../public/images/home-icon.png');
+  background-image: url('../images/home-icon.png');
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
@@ -6902,7 +6914,7 @@ form {
 }
 @media (max-width: 991px) {
   .titleBox--main:before {
-    background-image: url('../../../public/images/home-icon-mobile.png');
+    background-image: url('../images/home-icon-mobile.png');
     background-position: center;
     background-repeat: no-repeat;
     width: 345px;
@@ -7278,7 +7290,7 @@ button.button--orangeBig {
 /* .add .remove -----------------------------------------*/
 .add,
 .remove {
-  background-image: url(../../../public/images/symbols.png);
+  background-image: url(../images/symbols.png);
   right: 10px;
   margin-top: -3px;
   content: '';
@@ -7289,7 +7301,7 @@ button.button--orangeBig {
   left: 9px;
   width: 15px;
   height: 15px;
-  background-image: url('../../../public/images/symbols.png');
+  background-image: url('../images/symbols.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
 }
@@ -7299,7 +7311,7 @@ button.button--orangeBig {
   left: 7px;
   width: 15px;
   height: 15px;
-  background-image: url('../../../public/images/symbols.png');
+  background-image: url('../images/symbols.png');
   background-position: -36px 0px;
   background-repeat: no-repeat;
 }
@@ -7369,7 +7381,7 @@ button.button--orangeBig {
   position: relative;
   display: block;
   text-align: left;
-  background-image: url('../../../public/images/fon-header.jpg');
+  background-image: url('../images/fon-header.jpg');
   background-position: top;
   background-repeat: repeat-x;
   background-color: #fff;
@@ -7401,7 +7413,7 @@ button.button--orangeBig {
   }
 }
 .header-clouds:before {
-  background-image: url('../../../public/images/fon-clouds-left.png');
+  background-image: url('../images/fon-clouds-left.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   width: 545px;
@@ -7413,11 +7425,16 @@ button.button--orangeBig {
   }
 }
 .header-clouds:after {
-  background-image: url('../../../public/images/fon-clouds-right.png');
+  background-image: url('../images/fon-clouds-right.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   width: 547px;
-  right: 0px;
+  right: -10px;
+}
+@media (max-width: 1500px) {
+  .header-clouds:after {
+    right: -120px;
+  }
 }
 .header-cont {
   padding-top: 30px;
@@ -7438,13 +7455,13 @@ button.button--orangeBig {
   }
 }
 .header--home {
-  background-image: url('../../../public/images/fon-header-home.jpg');
+  background-image: url('../images/fon-header-home.jpg');
   background-position: top;
   background-repeat: repeat-x;
 }
 @media (max-width: 991px) {
   .header--home {
-    background-image: url('../../../public/images/fon-header.jpg');
+    background-image: url('../images/fon-header.jpg');
     background-position: top;
     background-repeat: repeat-x;
   }
@@ -7523,7 +7540,7 @@ button.button--orangeBig {
   display: inline-block;
   vertical-align: top;
   text-align: left;
-  background-image: url('../../../public/images/logo.png');
+  background-image: url('../images/logo.png');
   background-position: center;
   background-repeat: no-repeat;
   width: 170px;
@@ -7663,7 +7680,7 @@ button.button--orangeBig {
   left: auto;
   width: 11px;
   height: 8px;
-  background-image: url('../../../public/images/icons-arrows.png');
+  background-image: url('../images/icons-arrows.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   -webkit-transition: 0.2s transform;
@@ -7825,7 +7842,7 @@ button.button--orangeBig {
   left: auto;
   width: 11px;
   height: 8px;
-  background-image: url('../../../public/images/icons-arrows.png');
+  background-image: url('../images/icons-arrows.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   -webkit-transition: 0.2s transform;
@@ -8261,27 +8278,27 @@ button.button--orangeBig {
   color: #57687e;
 }
 .startNow-box--instantActivation:before {
-  background-image: url('../../../public/images/start-now/instant-activation.png');
+  background-image: url('../images/start-now/instant-activation.png');
   background-position: center;
   background-repeat: no-repeat;
 }
 .startNow-box--quickOutput:before {
-  background-image: url('../../../public/images/start-now/quick-output.png');
+  background-image: url('../images/start-now/quick-output.png');
   background-position: center;
   background-repeat: no-repeat;
 }
 .startNow-box--statistics:before {
-  background-image: url('../../../public/images/start-now/statistics.png');
+  background-image: url('../images/start-now/statistics.png');
   background-position: center;
   background-repeat: no-repeat;
 }
 .startNow-box--neuralNetwork:before {
-  background-image: url('../../../public/images/start-now/neural-network.png');
+  background-image: url('../images/start-now/neural-network.png');
   background-position: center;
   background-repeat: no-repeat;
 }
 .startNow-box--security:before {
-  background-image: url('../../../public/images/start-now/security.png');
+  background-image: url('../images/start-now/security.png');
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -8289,7 +8306,7 @@ button.button--orangeBig {
   position: relative;
   display: block;
   text-align: left;
-  background-image: url('../../../public/images/fon-common.jpg');
+  background-image: url('../images/fon-common.jpg');
   background-position: top;
   background-repeat: repeat-x;
   background-color: #fff;
@@ -8360,7 +8377,7 @@ button.button--orangeBig {
   left: 50%;
   width: 100px;
   height: 100px;
-  background-image: url('../../../public/images/button-play.png');
+  background-image: url('../images/button-play.png');
   background-position: center;
   background-repeat: no-repeat;
   margin: -50px 0px 0px -50px;
@@ -8649,7 +8666,7 @@ button.button--orangeBig {
 }
 .footer-menu--contacts li a:before,
 .footer-menu--contacts li span:before {
-  background-image: url('../../../public/images/icons-contacts.png');
+  background-image: url('../images/icons-contacts.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   position: absolute;
@@ -8683,7 +8700,7 @@ button.button--orangeBig {
 }
 .footer-menu--socialNetworks li a:before,
 .footer-menu--socialNetworks li span:before {
-  background-image: url('../../../public/images/icons-socialNetworks.png');
+  background-image: url('../images/icons-socialNetworks.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
   position: absolute;
