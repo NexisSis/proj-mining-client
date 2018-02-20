@@ -32,7 +32,7 @@ class Register extends React.Component {
         );
     }
 }
-Register.PropTypes ={
+Register.propTypes ={
     signup:PropTypes.func.isRequired
 }
 export default connect(null,{signup})(Register);

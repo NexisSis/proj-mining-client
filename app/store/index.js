@@ -19,7 +19,7 @@ const middleware = routerMiddleware(history);
 
 const store = createStore(
     rootReducer,
-    compose(applyMiddleware(thunk),window.devToolsExtension? window.devToolsExtension() : f => f )
+    compose(applyMiddleware(thunk,middleware),window.devToolsExtension? window.devToolsExtension() : f => f )
 
 );
 export {store, history};

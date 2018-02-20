@@ -21,7 +21,7 @@ class RegisterForm extends React.Component {
     }
     onSubmit(e){
         e.preventDefault();
-        this.props.signup(this.state);
+        this.props.signup(this.state)();
     }
     render() {
         return (
@@ -74,7 +74,7 @@ class RegisterForm extends React.Component {
     }
 }
 
-RegisterForm.PropTypes={
+RegisterForm.propTypes={
     signup:PropTypes.func.isRequired
 }
 
