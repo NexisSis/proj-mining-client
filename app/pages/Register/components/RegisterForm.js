@@ -1,6 +1,9 @@
 import React from "react";
 import TextFieldGroup from "app/utils/components/TextFieldGroup";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import validateInput from "app/utils/components/ValidationSignUp";
+
+
 class RegisterForm extends React.Component {
 
     constructor(props){
@@ -10,25 +13,36 @@ class RegisterForm extends React.Component {
             password:'',
             passwordConfirmation:'',
             country:'',
+            errors:{},
             isLoading:false,
 
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+    isValid(){
+        const {errors,isValid} = validateInput((this.state));
+        if(!isValid){
+            this.setState({errors});
+        }
+        return isValid;
+    }
     onChange(e){
         this.setState({[e.target.name] : e.target.value});
     }
     onSubmit(e){
         e.preventDefault();
-        this.props.signup(this.state)();
+        if(this.isValid()){
+            this.props.signup(this.state)();
+        }
     }
     render() {
+        const {errors} = this.state;
         return (
             <div>
                 <form class="form" onSubmit={this.onSubmit}>
 
-                    <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange}/>
+                    <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange} type="email" error={errors.email}/>
 
 
                     <div class="reg-box">
@@ -50,9 +64,9 @@ class RegisterForm extends React.Component {
                         </div>
                     </div>
 
-                    <TextFieldGroup field="password" value={this.state.password} label={"Пароль"} onChange={this.onChange} type="password"/>
+                    <TextFieldGroup field="password" value={this.state.password} label={"Пароль"} onChange={this.onChange} type="password" error={errors.password}/>
 
-                    <TextFieldGroup field="passwordConfirmation" value={this.state.passwordConfirmation} label={"Повторить пароль"} onChange={this.onChange} type="password"/>
+                    <TextFieldGroup field="passwordConfirmation" value={this.state.passwordConfirmation} label={"Повторить пароль"} onChange={this.onChange} type="password" error={errors.passwordConfirmation}/>
 
                     <div class="reg-box">
 

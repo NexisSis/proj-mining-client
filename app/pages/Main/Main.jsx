@@ -2,9 +2,7 @@ import React from "react";
 import {Route, Switch} from "react-router-dom";
 import {Landing} from "app/pages/Landing";
 import {NoMatch} from "app/pages/NoMatch";
-//import {Register} from "app/pages/Register";
 import Register from "app/pages/Register/Register";
-import {Login} from "app/pages/Login";
 import {Header} from "app/pages/Main";
 import {Footer} from "app/pages/Main";
 import {ContactUs} from "app/pages/ContactUs";
@@ -23,7 +21,6 @@ class Main extends React.Component {
                 <Header path={this.props.location.pathname}/>
                 <Switch>
                     <Route exact path={"/"} component={Landing}/>
-                    <Route path={"/login"} component={Login}/>
                     <Route path={"/register"} component={Register}/>
                     <Route path={"/contact-us"} component={ContactUs}/>
                     <Route component={NoMatch}/>
