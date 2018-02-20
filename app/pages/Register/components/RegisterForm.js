@@ -33,7 +33,8 @@ class RegisterForm extends React.Component {
     onSubmit(e){
         e.preventDefault();
         if(this.isValid()){
-            this.props.signup(this.state)();
+           // this.props.signup(this.state)();
+            console.log(this.state);
         }
     }
     render() {
@@ -50,7 +51,7 @@ class RegisterForm extends React.Component {
                         <div class="reg-box__value">
 
                             <div class="select">
-                                <select class="selectpicker" value={this.state.country} onChange={this.onChange} field={"country"}>
+                                <select class="selectpicker" value={this.state.country} onChange={this.onChange} name="country">
                                     <option>Китай</option>
                                     <option>Япония</option>
                                     <option>Польша</option>

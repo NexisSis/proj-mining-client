@@ -1,7 +1,29 @@
 import React from 'react';
+import TextFieldGroup from "app/utils/components/TextFieldGroup";
 
 export default class Modal extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            email:'',
+            password:'',
+            errors:{},
+            isRemember:false,
+            isLoading:false
+
+        }
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+    onChange(e){
+        this.setState({[e.target.name] : e.target.value});
+    }
+    onSubmit(e){
+        e.preventDefault();
+        console.log('Hello from onSubmit!');
+    }
     render(){
+        const {errors} = this.state;
         return(
                 <div class="modal modalCenter fade" id="login" tabIndex="-1" role="dialog"
                      aria-labelledby="ModalLabel" aria-hidden="true">
@@ -11,22 +33,11 @@ export default class Modal extends React.Component{
 
                                 <div class="titleBox titleBox--alignment titleModal"><h4>Вход</h4></div>
 
-                                <form class="form">
+                                <form class="form" onSubmit={this.onSubmit}>
 
-                                    <div class="reg-box">
-                                        <span class="reg-box__title">Эл. почта</span>
-                                        <div class="reg-box__value">
-                                            <input class="inputText" type="text" placeholder="cloudminer@mail.com" />
-                                        </div>
-                                    </div>
+                                    <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange} type="email" error={errors.email}/>
 
-                                    <div class="reg-box">
-                                        <span class="reg-box__title">Пароль</span>
-                                        <div class="reg-box__value has-error">
-                                            <input class="inputText inputError" type="password" />
-                                            <span class="has-error__text">Введите пароль</span>
-                                        </div>
-                                    </div>
+                                    <TextFieldGroup field="password" value={this.state.password} label={"Пароль"} onChange={this.onChange} type="password" error={errors.password}/>
 
                                     <div class="reg-box checkbox">
                                         <input id="checkbox_01" class="inputCheckbox" type="checkbox"/>
