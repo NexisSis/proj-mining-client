@@ -57,6 +57,7 @@ module.exports = {
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader",
+
                     // publicPath: development ? "http://localhost:8080" : "http://46.51.144.173"
                 })
             },
@@ -65,7 +66,14 @@ module.exports = {
                 use: [{
                     loader: 'style-loader', // inject CSS to page
                 }, {
-                    loader: 'css-loader', // translates CSS into CommonJS modules
+                    loader: 'css-loader',
+                    options: {
+                        modules: true,
+                        importLoaders: 1,
+                        sourceMap: true,
+                        localIdentName: '[name]__[local]__[hash:base64:5]',
+                    },
+                    // translates CSS into CommonJS modules
                 }, {
                     loader: 'postcss-loader', // Run post css actions
                     options: {
@@ -146,7 +154,10 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery",
         }),
-        new ExtractTextPlugin("assets/css/style.css"),
+        new ExtractTextPlugin({
+            filename:"assets/css/[name].css",
+            allChunks: true
+        }),
         // new webpack.optimize.DedupePlugin(), WARNING in DedupePlugin: This plugin was removed from webpack. Remove it from your configuration.
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),

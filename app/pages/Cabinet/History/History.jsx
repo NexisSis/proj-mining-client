@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderTitle from "app/components/Html/HeaderTitle";
+import HeaderTitle from "app/pages/Cabinet/components/Common/HeaderTitle";
 
 class History extends React.Component {
     render() {
@@ -218,4 +218,4 @@ class History extends React.Component {
     }
 }
 
-export {History};
+export default History;

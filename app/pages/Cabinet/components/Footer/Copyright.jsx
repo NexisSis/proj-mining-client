@@ -8,4 +8,4 @@ class Copyright extends React.Component {
     }
 }
 
-export {Copyright};
+export default Copyright;

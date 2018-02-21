@@ -1,5 +1,5 @@
 import React from "react";
-import NavLink from "app/components/Html/NavLink";
+import NavLink from "app/pages/Cabinet/components/Common/NavLink";
 
 class HashGraphNav extends React.Component {
     render() {

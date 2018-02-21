@@ -8,4 +8,4 @@ class ServerTime extends React.Component {
     }
 }
 
-export {ServerTime};
+export default ServerTime;

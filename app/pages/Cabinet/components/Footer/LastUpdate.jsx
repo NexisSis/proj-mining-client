@@ -8,4 +8,4 @@ class LastUpdate extends React.Component {
     }
 }
 
-export {LastUpdate};
+export default LastUpdate;

@@ -1,6 +1,6 @@
 import React from "react";
-import {Nav} from "app/components/Header/Nav";
-import {User} from "app/components/Header/User";
+import {Nav} from "app/pages/Cabinet/components/Header/Nav";
+import {User} from "app/pages/Cabinet/components/Header/User";
 import {Link} from "react-router-dom";
 
 class Header extends React.Component {
@@ -31,4 +31,4 @@ class Header extends React.Component {
     }
 }
 
-export {Header};
+export default Header;

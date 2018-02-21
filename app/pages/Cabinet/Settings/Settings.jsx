@@ -1,7 +1,7 @@
 import React from "react";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
-import HeaderTitle from "app/components/Html/HeaderTitle";
-import InputBox from "app/components/Settings/InputBox";
+import HeaderTitle from "app/pages/Cabinet/components/Common/HeaderTitle";
+import InputBox from "app/pages/Cabinet/components/Settings/InputBox";
 
 class Settings extends React.Component {
     render() {
@@ -65,4 +65,4 @@ class Settings extends React.Component {
     }
 }
 
-export {Settings};
+export default Settings;
