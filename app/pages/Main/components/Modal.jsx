@@ -35,9 +35,9 @@ export default class Modal extends React.Component{
 
                                 <form class="form" onSubmit={this.onSubmit}>
 
-                                    <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange} type="email" error={errors.email}/>
+                                    <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange} type="email" error={errors.email} required='true'/>
 
-                                    <TextFieldGroup field="password" value={this.state.password} label={"Пароль"} onChange={this.onChange} type="password" error={errors.password}/>
+                                    <TextFieldGroup field="password" value={this.state.password} label={"Пароль"} onChange={this.onChange} type="password" error={errors.password} required='true'/>
 
                                     <div class="reg-box checkbox">
                                         <input id="checkbox_01" class="inputCheckbox" type="checkbox"/>

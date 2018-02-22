@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 
-const TextFieldGroup = ({field,value,label,type,onChange,error}) => {
+const TextFieldGroup = ({field,value,label,type,onChange,error,required}) => {
     const errorClass = isEmpty(error)? "" : "has-error";
     return (
         <div class="reg-box">
             <span class="reg-box__title">{label}</span>
             <div class={"reg-box__value " + errorClass } >
                 <input
+                       required={required}
                        class="inputText"
                        type={type}
                        value={value}
@@ -28,11 +29,13 @@ TextFieldGroup.propTypes={
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     error: PropTypes.string,
+    required: PropTypes.bool,
     onChange: PropTypes.func.isRequired
 }
 
 TextFieldGroup.defaultProps = {
-    type:'text'
+    type:'text',
+    required:false
 }
 
 export default TextFieldGroup;
