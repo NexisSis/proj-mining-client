@@ -2,19 +2,19 @@ import React from "react";
 import TextFieldGroup from "app/utils/components/TextFieldGroup";
 import PropTypes from "prop-types";
 import validateInput from "app/utils/components/ValidationSignUp";
-
-
+import {Redirect} from "react-router-dom";
 class RegisterForm extends React.Component {
 
     constructor(props){
         super(props);
         this.state={
-            email:'',
-            password:'',
-            passwordConfirmation:'',
-            country:'',
+            email:'asd@mail.ru',
+            password:'12345678',
+            passwordConfirmation:'12345678',
+            country:'Китай',
             errors:{},
             isLoading:false,
+            isRedirect:false,
 
         }
         this.onChange = this.onChange.bind(this);
@@ -33,11 +33,13 @@ class RegisterForm extends React.Component {
     onSubmit(e){
         e.preventDefault();
         if(this.isValid()){
-           // this.props.signup(this.state)();
-            console.log(this.state);
+            this.setState({isRedirect:true});
         }
     }
     render() {
+        if(this.state.isRedirect){
+            return <Redirect to='/register-success' />;
+        }
         const {errors} = this.state;
         return (
             <div>

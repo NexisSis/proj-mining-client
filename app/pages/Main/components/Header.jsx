@@ -38,6 +38,14 @@ class Header extends React.Component {
                 });
                 break;
             }
+            case '/register-success': {
+                this.setState({
+                    path: path,
+                    isIndex:false,
+                    name:'Подтверждение регистрации'
+                });
+                break;
+            }
 
         }
     }
@@ -50,7 +58,6 @@ class Header extends React.Component {
             );
         }
         return (
-            <div>
                 <header class={this.state.isIndex ? 'header header--home' : 'header'}>
                     {clouds}
 
@@ -124,7 +131,6 @@ class Header extends React.Component {
 
                 </header>
 
-            </div>
         );
     }
 }

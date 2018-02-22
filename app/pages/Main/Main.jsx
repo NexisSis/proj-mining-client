@@ -10,6 +10,7 @@ import {ContactUs} from "app/pages/ContactUs";
 import "./assets/js/main";
 import "./assets/css/main.css";
 import Modal from 'app/pages/Main/components/Modal';
+import RegisterSuccess from "app/pages/RegisterSuccess/RegisterSuccess";
 
 class Main extends React.Component {
     constructor(props) {
@@ -17,13 +18,17 @@ class Main extends React.Component {
     }
 
     render() {
+
         return (
+
             <div>
                 <Header path={this.props.location.pathname}/>
                 <Switch>
                     <Route exact path={"/"} component={Landing}/>
                     <Route path={"/register"} component={Register}/>
                     <Route path={"/contact-us"} component={ContactUs}/>
+                    <Route path={"/register-success"} component={RegisterSuccess}/>
+
                     <Route component={NoMatch}/>
                 </Switch>
                 <Modal/>
