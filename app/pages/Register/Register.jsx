@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {signup} from "app/store/actions/user/register";
 import PropTypes from 'prop-types';
 
+
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -14,6 +15,7 @@ class Register extends React.Component {
     }
 
     render() {
+
         return (
             <div>
                 <div class="reg">

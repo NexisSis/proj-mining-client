@@ -68,12 +68,11 @@
   "scripts": {
     "babel": "babel --presets es2015 app/index.jsx -o build/bundle.js",
     "webpack:build": "webpack",
-    "webpack:run": "webpack-dev-server --watch --progress --inline --hot",
+    "webpack:run": "webpack-dev-server",
     "debug": "react-scripts",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
-
 }

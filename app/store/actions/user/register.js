@@ -13,8 +13,10 @@ export const actions = {
 
 export function signup(userData){
     return dispatch => {
-        return new Register({request:axios})
-            .signup(userData.email,userData.password,userData.passwordConfirm,userData.country);
+        return true;
+
+        //return new Register({request:axios})
+         //   .signup(userData.email,userData.password,userData.passwordConfirm,userData.country);
     };
 }
 
