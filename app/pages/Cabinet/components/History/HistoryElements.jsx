@@ -41,6 +41,6 @@ class HistoryElements extends React.Component {
     }
 }
 
-export {HistoryElements};
+export default HistoryElements;
 
 

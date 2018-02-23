@@ -2,29 +2,30 @@ import React from "react";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
 import HeaderTitle from "app/pages/Cabinet/components/Common/HeaderTitle";
 import InputBox from "app/pages/Cabinet/components/Settings/InputBox";
+import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
 
 class Settings extends React.Component {
     render() {
 
         return (
             <div>
-                <div class="content">
+                <div class={cabinetStyle["content"]}>
                     <HeaderTitle name="Настройки"/>
 
-                    <div class="settings">
+                    <div class={cabinetStyle["settings"]}>
 
-                        <div class="cont">
+                        <div class={cabinetStyle["cont"]}>
 
                             <Tabs selectedTabClassName="active">
-                                <TabList className="settings-menu">
+                                <TabList className={cabinetStyle["settings-menu"]}>
                                     <Tab><span>{"Профиль"}</span></Tab>
                                     <Tab><span>{"Кошельки"}</span></Tab>
                                     <Tab><span>{"Смена пароля"}</span></Tab>
                                     <Tab><span>{"2-факторная авторизация"}</span></Tab>
                                 </TabList>
                                 <TabPanel>
-                                    <div class="settings-cont">
-                                        <div class="setProfile">
+                                    <div class={cabinetStyle["settings-cont"]}>
+                                        <div class={cabinetStyle["setProfile"]}>
                                             <InputBox name={'Эл.почта'}/>
                                             <InputBox name={'Аватар'} isAvatar={'true'}/>
                                             <InputBox name={'Имя'}/>
@@ -47,9 +48,9 @@ class Settings extends React.Component {
 
                             </Tabs>
 
-                            <div class="settings-button">
+                            <div class={cabinetStyle["settings-button"]}>
 
-                                <a class="button button--big" href="javascript:void(0)">{"Сохранить"}</a>
+                                <a class={cabinetStyle["button"] + ' ' + cabinetStyle["button--big"]} href="javascript:void(0)">{"Сохранить"}</a>
 
                             </div>
 
@@ -58,7 +59,7 @@ class Settings extends React.Component {
                     </div>
 
                 </div>
-                <div class="hFooter"></div>
+                <div class={cabinetStyle["hFooter"]}></div>
 
             </div>
         );

@@ -81,6 +81,6 @@ class HistoryBox extends React.Component {
     }
 }
 
-export {HistoryBox};
+export default HistoryBox;
 
 
