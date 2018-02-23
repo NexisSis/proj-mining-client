@@ -1,9 +1,8 @@
 import api from "api";
 import shortid from 'shortid';
-
 export class JsonRpc{
     constructor(props){
-        this.request = props.request;
+         this.requestTo = props.request;
         //this.language = props.language;
     }
     buildUrl(){
@@ -13,8 +12,8 @@ export class JsonRpc{
         return shortid.generate();
     }
     request(method,params,id){
-        return this.request.post(
-            buildUrl(),
+        return this.requestTo.post(
+            this.buildUrl(),
             {
                 jsonrpc: "2.0",
                 method: method,

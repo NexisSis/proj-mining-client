@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import {auth} from './user/authentication';
-import {registration} from './user/register';
+import authentication from './user/authentication';
 import {alert} from './alert';
+import test from './user/test';
 
 export default combineReducers({
-    auth,
-    registration,
+    authentication,
+    test,
     alert
 });

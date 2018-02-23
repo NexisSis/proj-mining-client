@@ -11,6 +11,7 @@ import "./assets/js/main";
 import "./assets/css/main.css";
 import Modal from 'app/pages/Main/components/Modal';
 import RegisterSuccess from "app/pages/RegisterSuccess/RegisterSuccess";
+import setAuthorizationToken from "app/utils/setAuthorizationToken";
 
 class Main extends React.Component {
     constructor(props) {

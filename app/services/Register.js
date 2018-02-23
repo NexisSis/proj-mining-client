@@ -1,16 +1,18 @@
 import {JsonRpc} from "./JsonRpc";
 
-export class Register extends JsonRpc {
+export default class Register extends JsonRpc {
     constructor(props){
         super(props);
     }
 
     signup(email,password,passwordConfirm,country) {
+        console.log(email,password,passwordConfirm,country,this.buildUrl());
         return this.request("register.signup",{
             email: email,
             password: password,
-            passwordConfirmation:passwordConfirm,
+            password_confirmation:passwordConfirm,
             country : country,
         },this.getId());
     }
+
 }

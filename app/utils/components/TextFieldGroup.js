@@ -29,7 +29,6 @@ TextFieldGroup.propTypes={
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     error: PropTypes.string,
-    required: PropTypes.bool,
     onChange: PropTypes.func.isRequired
 }
 
