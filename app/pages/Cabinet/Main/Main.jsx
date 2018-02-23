@@ -10,8 +10,8 @@ import Footer from "app/pages/Cabinet/components/Common/Footer";
 import Header from "app/pages/Cabinet/components/Common/Header";
 import {NoMatch} from "app/pages";
 
-//import "app/pages/Cabinet/assets/css/cabinet.css";
-//import "app/pages/Cabinet/assets/css/libs.css";
+import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
+import "app/pages/Cabinet/assets/css/libs.css";
 
 class CabinetMain extends React.Component {
     constructor(props) {
@@ -32,12 +32,12 @@ class CabinetMain extends React.Component {
                 <Footer/>
 */
         return (
-            <div>
+            <div class={cabinetStyle["admin-panel"]}>
                 <Header/>
                 <Switch>
-                    <Route exact path={match.url+'/'}  render={() => <h3>Main.</h3>}/>
-                    <Route path={match.url+'/settings'}  render={() => <h3>Settings.</h3>}/>
-                    <Route path={match.url+'/history'} render={() => <h3>History.</h3>}/>
+                    <Route exact path={match.url+'/'} component={Panel} />
+                    <Route path={match.url+'/settings'}  component={Settings} />
+                    <Route path={match.url+'/history'} component={History} />
                     <Route component={NoMatch}/>
                 </Switch>
                 <Footer/>

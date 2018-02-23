@@ -1,12 +1,13 @@
 import React from "react";
+import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
 
 class HashGraphReturn extends React.Component {
     render() {
         return (
             <div>
-                <div class="graphics-box__title"><span>Доходность за 1 TH/s</span></div>
+                <div class={cabinetStyle["graphics-box__title"]}><span>Доходность за 1 TH/s</span></div>
 
-                <div class="graphics-box__tab">
+                <div class={cabinetStyle["graphics-box__tab"]}>
 
                     <table>
                         <tr>
@@ -42,4 +43,4 @@ class HashGraphReturn extends React.Component {
     }
 }
 
-export {HashGraphReturn};
+export default HashGraphReturn;

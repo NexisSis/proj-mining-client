@@ -5,6 +5,7 @@ window.onload = function(){
 
 
 /* page ---------------------------------------*/
+/*
 var page = {
     x_lg: 1280,
     x_md: 992,
@@ -34,7 +35,7 @@ page.events = function(){
 };
 
 
-
+*/
 /* menu ---------------------------------------*/
 var menu = {
     active: 'active',

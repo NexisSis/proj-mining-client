@@ -1,22 +1,23 @@
 import React from "react";
+import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
 
 class InputBox extends React.Component {
     render() {
         let userInputType;
         if (this.props.isAvatar) {
             userInputType = (
-                <div class="addAvatar">
-                    <div class="addAvatar__button"></div>
+                <div class={cabinetStyle["addAvatar"]}>
+                    <div class={cabinetStyle["addAvatar__button"]}></div>
                 </div>
             );
         } else if (this.props.isBirth) {
 
 
             userInputType = (
-                <div class="dateBirth">
-                    <div class="dateBirth__box dateBirth__box--month">
+                <div class={cabinetStyle["dateBirth"]}>
+                    <div class={cabinetStyle["dateBirth__box"] + cabinetStyle["dateBirth__box--month"]}>
 
-                        <div class="select">
+                        <div class={cabinetStyle["select"]}>
                             <select class="selectpicker" data-actionsBox="true">
                                 <option>Январь</option>
                                 <option>Февраль</option>
@@ -34,12 +35,12 @@ class InputBox extends React.Component {
                         </div>
 
                     </div>
-                    <div class="dateBirth__box dateBirth__box--day">
-                        <input class="inputText" type="text"/>
+                    <div class={cabinetStyle["dateBirth__box"]  + cabinetStyle["dateBirth__box--day"]}>
+                        <input class={cabinetStyle["inputText"]} type="text"/>
                     </div>
-                    <div class="dateBirth__box dateBirth__box--year">
+                    <div class={cabinetStyle["dateBirth__box"] + cabinetStyle["dateBirth__box--year"]}>
 
-                        <div class="select">
+                        <div class={cabinetStyle["select"]}>
                             <select class="selectpicker" data-actionsBox="true">
                                 <option>1980</option>
                                 <option>1981</option>
@@ -84,13 +85,13 @@ class InputBox extends React.Component {
         }
         else {
             userInputType = (
-                <input class="inputText" type="text"/>
+                <input class={cabinetStyle["inputText"]} type="text"/>
             );
         }
         return (
-            <div class={'setProfile__box'}>
-                <div class="setProfile__info"><span>{this.props.name}</span></div>
-                <div class="setProfile__value">
+            <div class={cabinetStyle['setProfile__box']}>
+                <div class={cabinetStyle["setProfile__info"]}><span>{this.props.name}</span></div>
+                <div class={cabinetStyle["setProfile__value"]}>
                     {userInputType}
                 </div>
             </div>
@@ -99,4 +100,4 @@ class InputBox extends React.Component {
     }
 }
 
-export {InputBox};
+export default InputBox;

@@ -9,6 +9,6 @@ class HistoryTitle extends React.Component {
 }
 
 
-export {HistoryTitle};
+export default HistoryTitle;
 
 

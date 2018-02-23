@@ -3,29 +3,30 @@ import HashGraphNav from "./HashGraphNav";
 import HashGraphBalance from "./HashGraphBalance";
 import HashGraphReturnGraph from "./HashGraphReturnGraph";
 import HashGraphReturn from "./HashGraphReturn";
+import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
 
 class HashGraph extends React.Component {
     render() {
         return (
-            <div class="graphics-cont">
+            <div class={cabinetStyle["graphics-cont"]}>
 
-                <div class="graphics-nav">
-                    <span class="graphics-title"><b></b>{this.props.name}</span>
+                <div class={cabinetStyle["graphics-nav"]}>
+                    <span class={cabinetStyle["graphics-title"]}><b></b>{this.props.name}</span>
                     <HashGraphNav/>
                 </div>
-                <div class="graphics-box">
+                <div class={cabinetStyle["graphics-box"]}>
                     <HashGraphBalance/>
                 </div>
 
-                <div class="graphics-cont__left">
-                    <div class="graphics-box">
+                <div class={cabinetStyle["graphics-cont__left"]}>
+                    <div class={cabinetStyle["graphics-box"]}>
                         <HashGraphReturnGraph/>
                     </div>
                 </div>
 
-                <div class="graphics-cont__right">
+                <div class={cabinetStyle["graphics-cont__right"]}>
 
-                    <div class="graphics-box">
+                    <div class={cabinetStyle["graphics-box"]}>
                         <HashGraphReturn/>
                     </div>
 
@@ -36,4 +37,4 @@ class HashGraph extends React.Component {
     }
 }
 
-export {HashGraph};
+export default HashGraph;

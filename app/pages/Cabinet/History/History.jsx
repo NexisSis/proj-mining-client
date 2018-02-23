@@ -1,20 +1,21 @@
 import React from "react";
 import HeaderTitle from "app/pages/Cabinet/components/Common/HeaderTitle";
+import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
 
 class History extends React.Component {
     render() {
         return (
-            <div class="content">
+            <div class={cabinetStyle["content"]}>
 
                 <HeaderTitle name={"История"}/>
 
-                <div class="history">
+                <div class={cabinetStyle["history"]}>
 
-                    <div class="cont">
-                        <div class="history-box">
-                            <div class="history-box__title"><span>Выводы</span></div>
-                            <div class="history-box__cont scrollbar-tab">
-                                <table class="history-tab">
+                    <div class={cabinetStyle["cont"]}>
+                        <div class={cabinetStyle["history-box"]}>
+                            <div class={cabinetStyle["history-box__title"]}><span>Выводы</span></div>
+                            <div class={cabinetStyle["history-box__cont"] + ' ' + cabinetStyle["scrollbar-tab"]}>
+                                <table class={cabinetStyle["history-tab"]}>
                                     <thead>
                                     <tr>
                                         <td><span>ID</span></td>
@@ -31,7 +32,7 @@ class History extends React.Component {
                                         <td>456123</td>
                                         <td>11.01.18 09:59</td>
                                         <td>0.1 MH/s</td>
-                                        <td><span class="color-red">Истек</span></td>
+                                        <td><span class={cabinetStyle["color-red"]}>Истек</span></td>
                                         <td>456123</td>
                                         <td>456123</td>
                                     </tr>
@@ -39,7 +40,7 @@ class History extends React.Component {
                                         <td>456123</td>
                                         <td>11.01.18 09:59</td>
                                         <td>0.1 MH/s</td>
-                                        <td><span class="color-green">Обработан</span></td>
+                                        <td><span class={cabinetStyle["color-green"]}>Обработан</span></td>
                                         <td>456123</td>
                                         <td>456123</td>
                                     </tr>
@@ -47,7 +48,7 @@ class History extends React.Component {
                                         <td>456123</td>
                                         <td>11.01.18 09:59</td>
                                         <td>0.1 MH/s</td>
-                                        <td><span class="color-red">Истек</span></td>
+                                        <td><span class={cabinetStyle["color-red"]}>Истек</span></td>
                                         <td>456123</td>
                                         <td>456123</td>
                                     </tr>
@@ -55,7 +56,7 @@ class History extends React.Component {
                                         <td>456123</td>
                                         <td>11.01.18 09:59</td>
                                         <td>0.1 MH/s</td>
-                                        <td><span class="color-green">Обработан</span></td>
+                                        <td><span class={cabinetStyle["color-green"]}>Обработан</span></td>
                                         <td>456123</td>
                                         <td>456123</td>
                                     </tr>
@@ -65,19 +66,19 @@ class History extends React.Component {
 
                             </div>
 
-                            <div class="history-elements">
+                            <div class={cabinetStyle["history-elements"]}>
 
-                                <div class="history-elements__box history-elements__box--input">
+                                <div class={cabinetStyle["history-elements__box"] + ' ' + cabinetStyle["history-elements__box--input"]}>
 
-                                    <input class="inputText inputText--searchMin" type="text" placeholder="Поиск"/>
+                                    <input class={cabinetStyle["inputText"] + ' ' + cabinetStyle["inputText--searchMin"]} type="text" placeholder="Поиск"/>
 
                                 </div>
 
-                                <div class="history-elements__box history-elements__box--select">
+                                <div class={cabinetStyle["history-elements__box"] + cabinetStyle["history-elements__box--select"]}>
 
-                                    <span class="history-elements__box-title">Отображать</span>
+                                    <span class={cabinetStyle["history-elements__box-title"]}>Отображать</span>
 
-                                    <div class="select">
+                                    <div class={cabinetStyle["select"]}>
                                         <select class="selectpicker">
                                             <option>10</option>
                                             <option>25</option>
@@ -88,13 +89,13 @@ class History extends React.Component {
 
                                 </div>
 
-                                <div class="history-elements__box history-elements__box--button">
+                                <div class={cabinetStyle["history-elements__box"] + ' ' + cabinetStyle["history-elements__box--button"]}>
 
-                                    <span class="history-elements__box-title">1-10 из 25</span>
+                                    <span class={cabinetStyle["history-elements__box-title"]}>1-10 из 25</span>
 
-                                    <ul class="button-arrows">
-                                        <li class="button-arrows__prev"></li>
-                                        <li class="button-arrows__next"></li>
+                                    <ul class={cabinetStyle["button-arrows"]}>
+                                        <li class={cabinetStyle["button-arrows__prev"]}></li>
+                                        <li class={cabinetStyle["button-arrows__next"]}></li>
                                     </ul>
 
                                 </div>
@@ -104,13 +105,13 @@ class History extends React.Component {
                         </div>
 
 
-                        <div class="history-box">
+                        <div class={cabinetStyle["history-box"]}>
 
-                            <div class="history-box__title"><span>Журнал</span></div>
+                            <div class={cabinetStyle["history-box__title"]}><span>Журнал</span></div>
 
-                            <div class="history-box__cont scrollbar-tab">
+                            <div class={cabinetStyle["history-box__cont scrollbar-tab"]}>
 
-                                <table class="history-tab">
+                                <table class={cabinetStyle["history-tab"]}>
 
                                     <thead>
                                     <tr>
@@ -172,19 +173,19 @@ class History extends React.Component {
 
                             </div>
 
-                            <div class="history-elements">
+                            <div class={cabinetStyle["history-elements"]}>
 
-                                <div class="history-elements__box history-elements__box--input">
+                                <div class={cabinetStyle["history-elements__box"] + cabinetStyle["history-elements__box--input"]}>
 
-                                    <input class="inputText inputText--searchMin" type="text" placeholder="Поиск"/>
+                                    <input class={cabinetStyle["inputText"] +' ' + cabinetStyle["inputText--searchMin"]} type="text" placeholder="Поиск"/>
 
                                 </div>
 
-                                <div class="history-elements__box history-elements__box--select">
+                                <div class={cabinetStyle["history-elements__box history-elements__box--select"]}>
 
-                                    <span class="history-elements__box-title">Отображать</span>
+                                    <span class={cabinetStyle["history-elements__box-title"]}>Отображать</span>
 
-                                    <div class="select">
+                                    <div class={cabinetStyle["select"]}>
                                         <select class="selectpicker">
                                             <option>10</option>
                                             <option>25</option>
@@ -195,13 +196,13 @@ class History extends React.Component {
 
                                 </div>
 
-                                <div class="history-elements__box history-elements__box--button">
+                                <div class={cabinetStyle["history-elements__box"] + ' ' +  cabinetStyle["history-elements__box--button"]}>
 
-                                    <span class="history-elements__box-title">1-10 из 25</span>
+                                    <span class={cabinetStyle["history-elements__box-title"]}>1-10 из 25</span>
 
-                                    <ul class="button-arrows">
-                                        <li class="button-arrows__prev"></li>
-                                        <li class="button-arrows__next"></li>
+                                    <ul class={cabinetStyle["button-arrows"]}>
+                                        <li class={cabinetStyle["button-arrows__prev"]}></li>
+                                        <li class={cabinetStyle["button-arrows__next"]}></li>
                                     </ul>
 
                                 </div>
@@ -212,7 +213,7 @@ class History extends React.Component {
                     </div>
 
                 </div>
-                <div className="hFooter"></div>
+                <div className={cabinetStyle["hFooter"]}></div>
             </div>
         );
     }

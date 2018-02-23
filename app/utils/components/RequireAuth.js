@@ -7,7 +7,7 @@ export default function(ComposedComponent,history) {
 
         componentWillMount() {
             if (!this.props.isAuthenticated) {
-                history.push('/');
+              //  history.push('/');
             }
         }
 
