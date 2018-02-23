@@ -1,4 +1,4 @@
-import {SET_CURRENT_USER} from "../../constants/user";
+import SET_CURRENT_USER from "../../constants/user";
 import isEmpty from "lodash/isEmpty";
 
 const initialState = {

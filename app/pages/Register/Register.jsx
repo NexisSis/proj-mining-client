@@ -3,8 +3,6 @@ import RegisterForm from "./components/RegisterForm";
 import {connect} from 'react-redux';
 import {signup} from "app/store/actions/user/register";
 import PropTypes from 'prop-types';
-
-
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -14,8 +12,9 @@ class Register extends React.Component {
         $('.selectpicker').selectpicker();
     }
 
-    render() {
 
+
+    render() {
         return (
             <div>
                 <div class="reg">
@@ -37,4 +36,6 @@ class Register extends React.Component {
 Register.propTypes ={
     signup:PropTypes.func.isRequired
 }
+
+
 export default connect(null,{signup})(Register);

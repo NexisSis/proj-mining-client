@@ -1,7 +1,11 @@
 import React from 'react';
 import TextFieldGroup from "app/utils/components/TextFieldGroup";
+import {authentication} from "app/store/actions/user/authetication";
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+//import {test} from "app/store/actions/user/test";
 
-export default class Modal extends React.Component{
+class Modal extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -20,7 +24,10 @@ export default class Modal extends React.Component{
     }
     onSubmit(e){
         e.preventDefault();
-        console.log('Hello from onSubmit!');
+        if(this.props.authentication(this.state)){
+            console.log(this.props.history);
+        }
+       // this.props.test({isAuth:true});
     }
     render(){
         const {errors} = this.state;
@@ -69,3 +76,9 @@ export default class Modal extends React.Component{
         );
     }
 }
+
+Modal.propTypes={
+    authentication:PropTypes.func.isRequired
+}
+
+export default connect(null,{authentication})(Modal);

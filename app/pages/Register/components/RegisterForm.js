@@ -33,7 +33,11 @@ class RegisterForm extends React.Component {
     onSubmit(e){
         e.preventDefault();
         if(this.isValid()){
-            this.setState({isRedirect:true});
+            this.props.signup(this.state)().then(response => {
+                console.log(response);
+            }).catch(error=>{
+               console.log(error);
+            });
         }
     }
     render() {
