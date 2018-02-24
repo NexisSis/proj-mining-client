@@ -4,11 +4,12 @@ const I18nPlugin = require("i18n-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 var development = process.env.NODE_ENV !== "production";
+console.log("isDevelopment ", development);
 var languages = [];
 
-process.traceDeprecation = true;
 
 module.exports = {
     context: __dirname,
@@ -16,31 +17,34 @@ module.exports = {
         path: path.resolve(__dirname, "build"),
         filename: "bundle.js"
     },
-    devtool: development ? "inline-source-map" : false,
+    devtool: "source-map",
     entry: "./app/index.js",
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: [
-                            ["babel-preset-react"], // ['presetName',{optionName:value}]
-                            ["babel-preset-env"],
-                            ["stage-0"]
-                        ],
-                        plugins: [
-                            "react-html-attrs",
-                            "transform-decorators-legacy",
-                            "transform-class-properties",
-                            "transform-react-jsx",
-                            "transform-react-constant-elements"
-                        ]
+                include: path.resolve(__dirname, "app"),
+                enforce: "pre",
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: [
+                                ["babel-preset-react"], // ['presetName',{optionName:value}]
+                                ["babel-preset-env"],
+                                ["stage-0"]
+                            ],
+                            plugins: [
+                                "react-html-attrs",
+                                "transform-decorators-legacy",
+                                "transform-class-properties",
+                                "transform-react-jsx",
+                                "transform-react-constant-elements"
+                            ]
+                        }
                     }
-                }
-
+                ]
             },
             // {
             //     test: require.resolve('react'),
@@ -56,37 +60,43 @@ module.exports = {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-                    // publicPath: development ? "http://localhost:8080" : "http://46.51.144.173"
-                })
-            },
-            {
-                test: /\.(scss)$/,
-                use: [{
-                    loader: 'style-loader', // inject CSS to page
-                }, {
-                    loader: 'css-loader',
-                    options: {
-                        modules: true,
-                        importLoaders: 1,
-                        sourceMap: true,
-                        localIdentName: '[name]__[local]__[hash:base64:5]',
-                    },
-                    // translates CSS into CommonJS modules
-                }, {
-                    loader: 'postcss-loader', // Run post css actions
-                    options: {
-                        plugins: function () { // post css plugins, can be exported to postcss.config.js
-                            return [
-                                require('precss'),
-                                require('autoprefixer')
-                            ];
+                    use: {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: true,
+                            localIdentName: development ? "[name]__[local]" : "[name]__[local]___[hash:base64:5]"
                         }
                     }
-                }, {
-                    loader: 'sass-loader' // compiles Sass to CSS
-                }]
+                })
             },
+            // {
+            //     test: /\.(scss)$/,
+            //     use: [{
+            //         loader: 'style-loader', // inject CSS to page
+            //     }, {
+            //         loader: 'css-loader',
+            //         options: {
+            //             modules: true,
+            //             importLoaders: 1,
+            //             sourceMap: true,
+            //             localIdentName: development ? "[name]__[local]" : "[name]__[local]__[hash:base64:5]",
+            //         },
+            //         // translates CSS into CommonJS modules
+            //     }, {
+            //         loader: 'postcss-loader', // Run post css actions
+            //         options: {
+            //             plugins: function () { // post css plugins, can be exported to postcss.config.js
+            //                 return [
+            //                     require('precss'),
+            //                     require('autoprefixer')
+            //                 ];
+            //             }
+            //         }
+            //     }, {
+            //         loader: 'sass-loader' // compiles Sass to CSS
+            //     }]
+            // },
             {
                 test: /\.(png|gif|jpg|jpeg|webp)$/,
                 use: [
@@ -101,7 +111,7 @@ module.exports = {
                     {
                         loader: "file-loader",
                         options: {
-                            name: "assets/images/[name].[ext]?[hash]",
+                            name: development ? "assets/images/[name].[ext]" : "assets/images/[name].[ext]?[hash]",
                             publicPath: "/build/"
                         }
                     }
@@ -122,7 +132,7 @@ module.exports = {
                     {
                         loader: "file-loader",
                         options: {
-                            name:"assets/fonts/[name].[ext]?[hash]",
+                            name: development ? "assets/fonts/[name].[ext]" : "assets/fonts/[name].[ext]?[hash]",
                             publicPath: "/build/"
                         }
                     }
@@ -143,26 +153,32 @@ module.exports = {
         }
     },
     devServer: {
-        contentBase: "./",
-        compress: true,
-        historyApiFallback: true,
-        port: 8081
+        port: 8080
     },
     plugins: [
+        new CleanWebpackPlugin("build"),
+        // new webpack.SourceMapDevToolPlugin({}),
+        // new webpack.LoaderOptionsPlugin({
+        //     minimize: true,
+        //     debug: development,
+        //     options: {
+        //         context: path.resolve(__dirname, "app")
+        //     }
+        // }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
         }),
         new ExtractTextPlugin({
-            filename:"assets/css/[name].css",
+            filename: "assets/css/[name].css",
             allChunks: true
         }),
         // new webpack.optimize.DedupePlugin(), WARNING in DedupePlugin: This plugin was removed from webpack. Remove it from your configuration.
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
+        // new webpack.optimize.OccurrenceOrderPlugin(),
+        // new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
         new I18nPlugin(languages),
-        new CompressionPlugin(),
-        new CleanWebpackPlugin(["build"])
+        // new CompressionPlugin(),
+        // new CleanWebpackPlugin(["build"])
     ],
     externals: {
         "api": JSON.stringify(development ? require("./config/development/api.json") : require("./config/production/api.json"))
