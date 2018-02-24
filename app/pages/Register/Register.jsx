@@ -22,13 +22,10 @@ class Register extends React.Component {
                 <div class={mainStyle["reg"]}>
 
                     <div class={mainStyle["container-fluid"]}>
-
                         <div class={mainStyle["reg-cont"]}>
                             <RegisterForm signup={signup}/>
                         </div>
-
                     </div>
-
                 </div>
                 <div class={mainStyle["hFooter"]}></div>
             </div>

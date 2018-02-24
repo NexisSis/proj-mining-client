@@ -47,6 +47,22 @@ class Header extends React.Component {
                 });
                 break;
             }
+            case '/login': {
+                this.setState({
+                    path: path,
+                    isIndex:false,
+                    name:'Логин'
+                });
+                break;
+            }
+            case '/login-bad': {
+                this.setState({
+                    path: path,
+                    isIndex:false,
+                    name:'Логин'
+                });
+                break;
+            }
 
         }
     }
@@ -58,6 +74,9 @@ class Header extends React.Component {
                 <div class={mainStyle["header-clouds"]}></div>
             );
         }
+
+      //<li><a class={mainStyle["button"]} href="#" data-toggle="modal" data-target="#login">Войти</a></li>
+
         return (
                 <header class={this.state.isIndex ? mainStyle['header'] + ' ' + mainStyle['header--home'] : mainStyle['header']}>
                     {clouds}
@@ -110,7 +129,7 @@ class Header extends React.Component {
                                     </div>
 
                                     <ul class={mainStyle["reg-menu"]}>
-                                        <li><a class={mainStyle["button"]} href="#" data-toggle="modal" data-target="#login">Войти</a></li>
+                                        <li><a class={mainStyle["button"]} href="/login" data-target="#login">Войти</a></li>
                                         <li><Link to={'register'} class={mainStyle['button'] + ' '+ mainStyle["button--orange"]}>Регистрация</Link>
                                         </li>
                                     </ul>

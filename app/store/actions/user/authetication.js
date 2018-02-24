@@ -1,6 +1,7 @@
 import axios from 'axios';
 import setAuthorizationToken from 'app/utils/setAuthorizationToken';
 import {SET_CURRENT_USER} from "app/store/constants/user";
+import Auth from "app/services/Auth";
 
 export function setCurrentUser(isAuth) {
     return{
@@ -9,20 +10,29 @@ export function setCurrentUser(isAuth) {
     };
 }
 
-export function authentication(user) {
+export function authentication(userData) {
     return dispatch => {
-        console.log(user);
+           /* return new Auth({request:axios})
+                .auth(userData.email,userData.password).then(response =>{
+                console.log(user);
+                localStorage.setItem('token', 'testtokeeeen');
+                setAuthorizationToken('testtokeeeen');
+                dispatch(setCurrentUser({isAuth: true}));
+                return true;
+        });*/
         localStorage.setItem('token', 'testtokeeeen');
         setAuthorizationToken('testtokeeeen');
         dispatch(setCurrentUser({isAuth: true}));
         return true;
-
     };
+
 }
 function security() {
 
 }
 
 function logout() {
-
+    localStorage.removeItem('token');
+    setAuthorizationToken(false);
+    dispatch(setCurrentUser({}));
 }
