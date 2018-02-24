@@ -18,11 +18,11 @@ export function signup(userData){
     };
 }
 
-function confirm(userData) {
+export function confirm(userData) {
     return dispatch => {
-    //    return new Confirm({request:axios})
-       //     .confirm(userData.token);
-        return console.log("Hey from confirm action!");
+       return new Confirm({request:axios})
+            .confirm(userData);
+
     };
 }
 
