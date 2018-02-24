@@ -1,11 +1,17 @@
 import React from "react";
 import NavLink from "app/pages/Cabinet/components/Common/NavLink";
 import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
+import {logout} from "app/store/actions/user/authetication";
+import {Redirect} from "react-router-dom";
+import {connect} from 'react-redux';
 
 class Nav extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {isActive: 1};
+        this.state = {
+            isActive: 1,
+            isRedirect: false
+        };
         this.isActive = this.isActive.bind(this);
     }
 
@@ -16,8 +22,16 @@ class Nav extends React.Component {
     setActive(id) {
         this.state = {isActive: id};
     }
+    handleClickLogout(id){
+        this.setActive(id);
+        this.props.logout();
+        this.setState({isRedirect:true});
+    }
 
     render() {
+        if(this.state.isRedirect){
+            return <Redirect to='/' />;
+        }
         const nav = [
             {class: 'menu-buy', name: 'Купить хешрейт', href: '/cabinet/'},
             {class: 'menu-room', name: 'Личный кабинет', href: '/cabinet/'},
@@ -42,7 +56,7 @@ class Nav extends React.Component {
 
                 <ul class={cabinetStyle["entrance"]}>
                     <li class={cabinetStyle['entrance-enter']+' ' + cabinetStyle[this.isActive(nav.length)]}
-                        onClick={() => this.setActive(nav.length)}><NavLink href={'#'} name={'Выйти'}/></li>
+                        onClick={() => this.handleClickLogout(nav.length)}><NavLink href={'#'} name={'Выйти'}/></li>
                 </ul>
             </div>
 
@@ -50,4 +64,4 @@ class Nav extends React.Component {
     }
 }
 
-export default Nav;
+export default connect(null,{logout})(Nav);;
