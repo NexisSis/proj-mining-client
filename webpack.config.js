@@ -179,7 +179,6 @@ module.exports = {
         // new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
         new I18nPlugin(languages),
         // new CompressionPlugin(),
-        // new CleanWebpackPlugin(["build"])
     ],
     externals: {
         "api": JSON.stringify(development ? require("./config/development/api.json") : require("./config/production/api.json"))

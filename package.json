@@ -2,7 +2,7 @@
   "name": "mining-client",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
+  "main": "build/bundle.js",
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
