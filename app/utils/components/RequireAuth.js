@@ -1,22 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
-export default function(ComposedComponent,history) {
+import {Redirect} from 'react-router-dom';
+export default function(ComposedComponent) {
     class Authenticate extends React.Component {
-
+        constructor(){
+            super();
+            this.state={
+                isRedirect:false
+            };
+        }
         componentWillMount() {
             if (!this.props.isAuthenticated) {
-              //  history.push('/');
+                console.log('is Auth is so bad');
+                this.setState({isRedirect:true});
             }
         }
-
-        componentWillUpdate(nextProps) {
-            console.log('transfer to main page');
-           // history.push('/');
-        }
-
         render() {
+            if(this.state.isRedirect){
+                return (
+                    <Redirect to='/login-bad' />
+                );
+            }
             return (
                 <ComposedComponent {...this.props} />
             );
@@ -29,10 +34,11 @@ export default function(ComposedComponent,history) {
 
 
     function mapStateToProps(state) {
+        console.log(state);
         return {
-            isAuthenticated: state.authentication.isAuth
+            isAuthenticated: state.authentication.isAuthentificated
         };
     }
 
-    return  withRouter(connect(mapStateToProps, {})(Authenticate));
+    return  connect(mapStateToProps, {})(Authenticate);
 }

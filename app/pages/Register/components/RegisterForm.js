@@ -13,10 +13,11 @@ class RegisterForm extends React.Component {
             email:'asd@mail.ru',
             password:'12345678',
             passwordConfirmation:'12345678',
-            country:'Китай',
+            country:'Germany',
             errors:{},
             isLoading:false,
             isRedirect:false,
+            serverError:""
 
         }
         this.onChange = this.onChange.bind(this);
@@ -36,9 +37,18 @@ class RegisterForm extends React.Component {
         e.preventDefault();
         if(this.isValid()){
             this.props.signup(this.state)().then(response => {
-                console.log(response);
+                if(response.status == 200){
+                    console.log(response);
+                    if(response.data.error.message){
+                        this.setState({serverError:response.data.error.message});
+                    }
+                    if(Array.isArray(response.data.result)){
+                        this.setState({isRedirect:true});
+                    }
+                }
+
             }).catch(error=>{
-               console.log(error);
+               this.setState({errors:error});
             });
         }
     }
@@ -86,7 +96,7 @@ class RegisterForm extends React.Component {
                     </div>
 
                     <div class={mainStyle["reg-box"]}>
-
+                        <p>{this.state.serverError}</p>
                         <input class={mainStyle["button"] + ' ' + mainStyle["button--orangeBig"]} type="submit" value="Зарегистрироваться" disabled={this.state.isLoading} />
 
                     </div>

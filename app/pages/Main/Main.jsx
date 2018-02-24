@@ -9,8 +9,10 @@ import {Footer} from "app/pages/Main";
 import {ContactUs} from "app/pages/ContactUs";
 import Modal from 'app/pages/Main/components/Modal';
 import RegisterSuccess from "app/pages/RegisterSuccess/RegisterSuccess";
+import LoginTemp from "app/pages/LoginTemp/LoginTemp";
+import LoginTempBadAuth from "app/pages/LoginTemp/LoginTempBadAuth";
 import setAuthorizationToken from "app/utils/setAuthorizationToken";
-import "./assets/js/main";
+//import "./assets/js/main";
 //import "./assets/css/main.css";
 class Main extends React.Component {
     constructor(props) {
@@ -20,7 +22,6 @@ class Main extends React.Component {
     render() {
 
         return (
-
             <div>
                 <Header path={this.props.location.pathname}/>
                 <Switch>
@@ -28,7 +29,8 @@ class Main extends React.Component {
                     <Route path={"/register"} component={Register}/>
                     <Route path={"/contact-us"} component={ContactUs}/>
                     <Route path={"/register-success"} component={RegisterSuccess}/>
-
+                    <Route path={"/login"} component={LoginTemp}/>
+                    <Route path={"/login-bad"} component={LoginTempBadAuth}/>
                     <Route component={NoMatch}/>
                 </Switch>
                 <Modal/>
