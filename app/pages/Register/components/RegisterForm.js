@@ -3,6 +3,8 @@ import TextFieldGroup from "app/utils/components/TextFieldGroup";
 import PropTypes from "prop-types";
 import validateInput from "app/utils/components/ValidationSignUp";
 import {Redirect} from "react-router-dom";
+import mainStyle from "app/pages/Main/assets/css/main.css";
+
 class RegisterForm extends React.Component {
 
     constructor(props){
@@ -47,17 +49,17 @@ class RegisterForm extends React.Component {
         const {errors} = this.state;
         return (
             <div>
-                <form class="form" onSubmit={this.onSubmit}>
+                <form class={mainStyle["form"]} onSubmit={this.onSubmit}>
 
                     <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange} type="email" error={errors.email}/>
 
 
-                    <div class="reg-box">
-                        <span class="reg-box__title">Страна</span>
-                        <div class="reg-box__value">
+                    <div class={mainStyle["reg-box"]}>
+                        <span class={mainStyle["reg-box__title"]}>Страна</span>
+                        <div class={mainStyle["reg-box__value"]}>
 
-                            <div class="select">
-                                <select class="selectpicker" value={this.state.country} onChange={this.onChange} name="country">
+                            <div class={mainStyle["select"]}>
+                                <select class={mainStyle["selectpicker"]} value={this.state.country} onChange={this.onChange} name="country">
                                     <option>Китай</option>
                                     <option>Япония</option>
                                     <option>Польша</option>
@@ -75,17 +77,17 @@ class RegisterForm extends React.Component {
 
                     <TextFieldGroup field="passwordConfirmation" value={this.state.passwordConfirmation} label={"Повторить пароль"} onChange={this.onChange} type="password" error={errors.passwordConfirmation}/>
 
-                    <div class="reg-box">
+                    <div class={mainStyle["reg-box"]}>
 
-                        <div class="reg-captcha">
-                            <span class="reg-captcha__text"><b>captcha</b></span>
+                        <div class={mainStyle["reg-captcha"]}>
+                            <span class={mainStyle["reg-captcha__text"]}><b>captcha</b></span>
                         </div>
 
                     </div>
 
-                    <div class="reg-box">
+                    <div class={mainStyle["reg-box"]}>
 
-                        <input class="button button--orangeBig" type="submit" value="Зарегистрироваться" disabled={this.state.isLoading} />
+                        <input class={mainStyle["button"] + ' ' + mainStyle["button--orangeBig"]} type="submit" value="Зарегистрироваться" disabled={this.state.isLoading} />
 
                     </div>
 

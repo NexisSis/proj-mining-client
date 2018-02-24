@@ -3,6 +3,8 @@ import RegisterForm from "./components/RegisterForm";
 import {connect} from 'react-redux';
 import {signup} from "app/store/actions/user/register";
 import PropTypes from 'prop-types';
+import mainStyle from "app/pages/Main/assets/css/main.css";
+
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -17,18 +19,18 @@ class Register extends React.Component {
     render() {
         return (
             <div>
-                <div class="reg">
+                <div class={mainStyle["reg"]}>
 
-                    <div class="container-fluid">
+                    <div class={mainStyle["container-fluid"]}>
 
-                        <div class="reg-cont">
+                        <div class={mainStyle["reg-cont"]}>
                             <RegisterForm signup={signup}/>
                         </div>
 
                     </div>
 
                 </div>
-                <div class="hFooter"></div>
+                <div class={mainStyle["hFooter"]}></div>
             </div>
         );
     }

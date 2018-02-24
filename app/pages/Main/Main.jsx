@@ -10,8 +10,7 @@ import {ContactUs} from "app/pages/ContactUs";
 import Modal from 'app/pages/Main/components/Modal';
 import RegisterSuccess from "app/pages/RegisterSuccess/RegisterSuccess";
 import setAuthorizationToken from "app/utils/setAuthorizationToken";
-
-//import "./assets/js/main";
+import "./assets/js/main";
 //import "./assets/css/main.css";
 class Main extends React.Component {
     constructor(props) {
