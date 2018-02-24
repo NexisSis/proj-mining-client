@@ -4,6 +4,8 @@ import {authentication} from "app/store/actions/user/authetication";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 //import {test} from "app/store/actions/user/test";
+import mainStyle from "app/pages/Main/assets/css/main.css";
+
 
 class Modal extends React.Component{
     constructor(props){
@@ -32,38 +34,38 @@ class Modal extends React.Component{
     render(){
         const {errors} = this.state;
         return(
-                <div class="modal modalCenter fade" id="login" tabIndex="-1" role="dialog"
+                <div class={mainStyle["modal"] + ' ' + mainStyle["modalCenter"] + ' ' + mainStyle["fade"]} id="login" tabIndex="-1" role="dialog"
                      aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
+                    <div class={mainStyle["modal-dialog"]}>
+                        <div class={mainStyle["modal-content"]}>
+                            <div class={mainStyle["modal-body"]}>
 
-                                <div class="titleBox titleBox--alignment titleModal"><h4>Вход</h4></div>
+                                <div class={mainStyle["titleBox"] + ' ' +mainStyle["titleBox--alignment"] + ' ' + mainStyle["titleModal"]}><h4>Вход</h4></div>
 
-                                <form class="form" onSubmit={this.onSubmit}>
+                                <form class={mainStyle["form"]} onSubmit={this.onSubmit}>
 
                                     <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange} type="email" error={errors.email} required='true'/>
 
                                     <TextFieldGroup field="password" value={this.state.password} label={"Пароль"} onChange={this.onChange} type="password" error={errors.password} required='true'/>
 
-                                    <div class="reg-box checkbox">
-                                        <input id="checkbox_01" class="inputCheckbox" type="checkbox"/>
-                                        <label for="checkbox_01" class="reg-box__title_checkbox">Запомнить</label>
+                                    <div class={mainStyle["reg-box checkbox"]}>
+                                        <input id="checkbox_01" class={mainStyle["inputCheckbox"]} type="checkbox"/>
+                                        <label for="checkbox_01" class={mainStyle["reg-box__title_checkbox"]}>Запомнить</label>
 
-                                        <span class="reg-forgot__text pull-right">Забыли пароль?</span>
+                                        <span class={mainStyle["reg-forgot__text pull-right"]}>Забыли пароль?</span>
                                     </div>
 
-                                    <div class="reg-box">
+                                    <div class={mainStyle["reg-box"]}>
 
-                                        <div class="reg-captcha">
-                                            <span class="reg-captcha__text"><b>captcha</b></span>
+                                        <div class={mainStyle["reg-captcha"]}>
+                                            <span class={mainStyle["reg-captcha__text"]}><b>captcha</b></span>
                                         </div>
 
                                     </div>
 
-                                    <div class="reg-box">
+                                    <div class={mainStyle["reg-box"]}>
 
-                                        <input class="button button--orangeBig" type="submit" value="Войти" />
+                                        <input class={mainStyle["button"] + mainStyle["button--orangeBig"]} type="submit" value="Войти" />
 
                                     </div>
 

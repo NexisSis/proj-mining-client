@@ -1,3 +1,5 @@
+import mainStyle from "app/pages/Main/assets/css/main.css";
+
 window.onload = function(){
     page.init();
     menu.init();
@@ -38,8 +40,8 @@ page.events = function(){
 */
 /* menu ---------------------------------------*/
 var menu = {
-    active: 'active',
-    open: 'open',
+    active: mainStyle['active'],
+    open: mainStyle['open'],
      
     block: '.header-dropDown',
     button: '.mobileMenu',

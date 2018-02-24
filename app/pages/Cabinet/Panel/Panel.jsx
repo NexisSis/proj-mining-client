@@ -5,7 +5,9 @@ import HashGraph from "app/pages/Cabinet/components/Cabinet/HashGraph";
 import HeaderTitle from "app/pages/Cabinet/components/Common/HeaderTitle";
 import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
 class Panel extends React.Component {
+
     render() {
+
         return (
             <div class={cabinetStyle["content"]}>
                 <HeaderTitle name={"Личный кабинет"}/>
