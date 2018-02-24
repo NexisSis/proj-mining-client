@@ -35,15 +35,30 @@ class RegisterForm extends React.Component {
     }
     onSubmit(e){
         e.preventDefault();
+        var data = {
+            b:[]
+
+
+        };
         if(this.isValid()){
             this.props.signup(this.state)().then(response => {
                 if(response.status == 200){
-                    console.log(response);
                     if(response.data.error.message){
                         this.setState({serverError:response.data.error.message});
+                        if(response.data.error.validation_errors != 'undefined'){
+                            this.setState({errors:response.data.error.validation_errors});
+                        }
                     }
-                    if(Array.isArray(response.data.result)){
-                        this.setState({isRedirect:true});
+                   // console.log(response.data.result != 'undefined');
+                    console.log(response.data);
+                    if(response.data.hasOwnProperty('result')){
+                        console.log(response.data);
+                        console.log('result is here!!');
+                       // this.setState({isRedirect:true});
+                    }else{
+                        console.log(response.data);
+                        console.log('result is NOT here!!');
+
                     }
                 }
 

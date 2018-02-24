@@ -1,6 +1,6 @@
 import {JsonRpc} from "./JsonRpc";
 
-export class Confirm extends JsonRpc {
+export default class Confirm extends JsonRpc {
     constructor(props){
         super(props);
     }
