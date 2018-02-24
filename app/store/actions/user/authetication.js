@@ -31,8 +31,10 @@ function security() {
 
 }
 
-function logout() {
-    localStorage.removeItem('token');
-    setAuthorizationToken(false);
-    dispatch(setCurrentUser({}));
+export function logout() {
+    return dispatch => {
+        localStorage.removeItem('token');
+        setAuthorizationToken(false);
+        dispatch(setCurrentUser({}));
+    };
 }
