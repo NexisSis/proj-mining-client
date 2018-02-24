@@ -11,6 +11,7 @@ import Modal from 'app/pages/Main/components/Modal';
 import RegisterSuccess from "app/pages/RegisterSuccess/RegisterSuccess";
 import LoginTemp from "app/pages/LoginTemp/LoginTemp";
 import LoginTempBadAuth from "app/pages/LoginTemp/LoginTempBadAuth";
+import Confirmation from "app/pages/Confirmation/Confirmation";
 import setAuthorizationToken from "app/utils/setAuthorizationToken";
 //import "./assets/js/main";
 //import "./assets/css/main.css";
@@ -31,6 +32,7 @@ class Main extends React.Component {
                     <Route path={"/register-success"} component={RegisterSuccess}/>
                     <Route path={"/login"} component={LoginTemp}/>
                     <Route path={"/login-bad"} component={LoginTempBadAuth}/>
+                    <Route path={"/confirmation"} component={Confirmation}/>
                     <Route component={NoMatch}/>
                 </Switch>
                 <Modal/>
