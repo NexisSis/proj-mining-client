@@ -63,6 +63,14 @@ class Header extends React.Component {
                 });
                 break;
             }
+            case '/confirmation': {
+                this.setState({
+                    path: path,
+                    isIndex:false,
+                    name:'Подтверждение'
+                });
+                break;
+            }
 
         }
     }
