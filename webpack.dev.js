@@ -4,10 +4,8 @@ const I18nPlugin = require("i18n-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ManifestPlugin = require('webpack-manifest-plugin');
 
-var development = process.env.NODE_ENV !== "production";
-console.log("isDevelopment ", development);
-var languages = [];
 
 
 module.exports = {
@@ -16,28 +14,13 @@ module.exports = {
         path: path.resolve(__dirname, "build"),
         filename: "bundle.js"
     },
-    devtool: "source-map",
+    devtool: "inline-source-map",
     entry: "./app/index.js",
     module: {
         rules: [
             {
-                test: require.resolve('jquery'),
-                use: [
-                    {
-                        loader: 'expose-loader',
-                        options: '$'
-                    },
-                    {
-                        loader: 'expose-loader',
-                        options: 'jQuery'
-                    }
-                ]
-            },
-            {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
-                include: path.resolve(__dirname, "app"),
-                enforce: "pre",
                 use: [
                     {
                         loader: "babel-loader",
@@ -58,16 +41,6 @@ module.exports = {
                     }
                 ]
             },
-            // {
-            //     test: require.resolve('react'),
-            //     use: {
-            //         loader: 'imports-loader',
-            //         options: {
-            //             shim: 'es5-shim/es5-shim',
-            //             sham: 'es5-shim/es5-sham',
-            //         },
-            //     }
-            // },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -82,44 +55,9 @@ module.exports = {
                     }
                 })
             },
-            // {
-            //     test: /\.(scss)$/,
-            //     use: [{
-            //         loader: 'style-loader', // inject CSS to page
-            //     }, {
-            //         loader: 'css-loader',
-            //         options: {
-            //             modules: true,
-            //             importLoaders: 1,
-            //             sourceMap: true,
-            //             localIdentName: development ? "[name]__[local]" : "[name]__[local]__[hash:base64:5]",
-            //         },
-            //         // translates CSS into CommonJS modules
-            //     }, {
-            //         loader: 'postcss-loader', // Run post css actions
-            //         options: {
-            //             plugins: function () { // post css plugins, can be exported to postcss.config.js
-            //                 return [
-            //                     require('precss'),
-            //                     require('autoprefixer')
-            //                 ];
-            //             }
-            //         }
-            //     }, {
-            //         loader: 'sass-loader' // compiles Sass to CSS
-            //     }]
-            // },
             {
                 test: /\.(png|gif|jpg|jpeg|webp)$/,
                 use: [
-                    // {
-                    //     loader: "url-loader",
-                    //     options: {
-                    //         limit: 50000,
-                    //         mimetype: "application/octet-stream",
-                    //         fallback: "file-loader"
-                    //     }
-                    // },
                     {
                         loader: "file-loader",
                         options: {
@@ -133,14 +71,6 @@ module.exports = {
             {
                 test: /\.(eot|woff(2)?|ttf|svg)$/,
                 use: [
-                    // {
-                    //     loader: "url-loader",
-                    //     options: {
-                    //         limit: 10000,
-                    //         mimetype: "application/octet-stream",
-                    //         fallback: "file-loader"
-                    //     }
-                    // },
                     {
                         loader: "file-loader",
                         options: {
@@ -165,8 +95,6 @@ module.exports = {
         }
     },
     devServer: {
-        contentBase: "./",
-        historyApiFallback: true,
         port: 8080
     },
     plugins: [
@@ -179,11 +107,8 @@ module.exports = {
             filename: "assets/css/[name].css",
             allChunks: true
         }),
-        // new webpack.optimize.DedupePlugin(), WARNING in DedupePlugin: This plugin was removed from webpack. Remove it from your configuration.
-        // new webpack.optimize.OccurrenceOrderPlugin(),
-        // new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false}),
         new I18nPlugin(languages),
-        // new CompressionPlugin(),
+        new CompressionPlugin(),
     ],
     externals: {
         "api": JSON.stringify(development ? require("./config/development/api.json") : require("./config/production/api.json"))
