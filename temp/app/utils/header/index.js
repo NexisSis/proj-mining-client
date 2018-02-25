@@ -1,1 +1,0 @@
-export {authHeader} from "../setAuthorizationToken";
