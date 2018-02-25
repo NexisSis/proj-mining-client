@@ -62,7 +62,7 @@ class Header extends React.Component {
                 });
                 break;
             }
-            case '/login-bad': {
+            case '/forbidden': {
                 this.setState({
                     path: path,
                     isIndex: false,

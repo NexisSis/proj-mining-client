@@ -8,7 +8,9 @@ export default class Forbidden extends React.Component{
 
         };
         return (
-            <h1 style={style}>Вам тут быть не следует</h1>
+            <div>
+                <h1 style={style}>Вам тут быть не следует</h1>
+            </div>
         );
     }
 }
