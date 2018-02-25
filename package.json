@@ -65,7 +65,7 @@
     "webpack-dev-server": "^2.11.1"
   },
   "scripts": {
-    "webpack:build": "webpack",
+    "webpack:build": "webpack --watch --progress",
     "webpack:run": "webpack-dev-server"
   }
 }
