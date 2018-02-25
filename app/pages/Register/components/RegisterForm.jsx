@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import validateInput from "app/utils/components/ValidationSignUp";
 import {Redirect} from "react-router-dom";
 import mainStyle from "app/pages/Main/assets/css/main.css";
+import Recaptcha from "react-recaptcha";
 
 class RegisterForm extends React.Component {
 
@@ -15,13 +16,16 @@ class RegisterForm extends React.Component {
             passwordConfirmation:'12345678',
             country:'Germany',
             errors:{},
-            isLoading:false,
+            isCorrectLoading:false,
             isRedirect:false,
-            serverError:""
+            serverError:"",
+            isRecaptch:false
 
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.verifyCallbackRecaptch = this.verifyCallbackRecaptch.bind(this);
+        this.callbackRecaptch = this.callbackRecaptch.bind(this);
     }
     isValid(){
         const {errors,isValid} = validateInput((this.state));
@@ -42,7 +46,8 @@ class RegisterForm extends React.Component {
     }
     onSubmit(e){
         e.preventDefault();
-        if(this.isValid()) {
+        if(this.isValid() && this.state.isRecaptch) {
+            this.setState({isCorrectLoading:false});
             this.props.signup(this.state)().then(response => {
                 if (response.status == 200) {
                     if (response.data.error != undefined) {
@@ -59,8 +64,18 @@ class RegisterForm extends React.Component {
                         this.setState({isRedirect: false});
                     }
                 }
-            });
+                this.setState({isCorrectLoading:true});
+            }
+        );
+        }else{
+            this.setState({serverError:'Заполните все поля корректно!'});
         }
+    }
+    callbackRecaptch(){
+        this.setState({isCorrectLoading:true});
+    }
+    verifyCallbackRecaptch(){
+        this.setState({isRecaptch:true});
     }
     render() {
         if(this.state.isRedirect){
@@ -98,15 +113,18 @@ class RegisterForm extends React.Component {
 
                     <div class={mainStyle["reg-box"]}>
 
-                        <div class={mainStyle["reg-captcha"]}>
-                            <span class={mainStyle["reg-captcha__text"]}><b>captcha</b></span>
-                        </div>
+                        <Recaptcha
+                            sitekey="6LfCYUgUAAAAAK6pX0xWrAnKi0VJIrxT92b1UqyK"
+                            render="explicit"
+                            verifyCallback={this.verifyCallbackRecaptch}
+                            onloadCallback={this.callbackRecaptch}
+                            />
 
                     </div>
 
                     <div class={mainStyle["reg-box"]}>
                         <p>{this.state.serverError}</p>
-                        <input class={mainStyle["button"] + ' ' + mainStyle["button--orangeBig"]} type="submit" value="Зарегистрироваться" disabled={this.state.isLoading} />
+                        <input class={mainStyle["button"] + ' ' + mainStyle["button--orangeBig"]} type="submit" value="Зарегистрироваться" disabled={!this.state.isCorrectLoading} />
 
                     </div>
 

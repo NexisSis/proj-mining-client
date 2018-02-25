@@ -4,7 +4,7 @@ const I18nPlugin = require("i18n-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ManifestPlugin = require('webpack-manifest-plugin');
+//const ManifestPlugin = require('webpack-manifest-plugin');
 
 var development = process.env.NODE_ENV !== "production";
 console.log("isDevelopment ", development);
