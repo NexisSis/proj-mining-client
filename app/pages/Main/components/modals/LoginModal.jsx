@@ -1,12 +1,13 @@
 import React from 'react';
 import RegFieldGroup from "app/components/RegFieldGroup";
-import {signin} from "app/store/actions/user/authetication";
+import {signin,setCurrentUser} from "app/store/actions/user/authetication";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import mainStyle from "app/pages/Main/assets/css/main.css";
 import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
-
+import {Redirect} from "react-router-dom";
+import setAuthorizationToken from "app/utils/setAuthorizationToken";
 
 class LoginModal extends React.Component {
     constructor(props) {
@@ -17,9 +18,11 @@ class LoginModal extends React.Component {
             errors: {},
             rememberMe: false,
             isLoading: false,
-            errorMsg:''
+            errorMsg:'',
+            isRedirect:false
 
         };
+        console.log(this.context);
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -30,12 +33,31 @@ class LoginModal extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
-        if (!this.props.signin(this.state)) {
-            this.setState({errorMsg:'Неправильный логин или пароль'});
-        }
+       signin(this.state)().then(response => {
+           if (response.data.error != undefined) {
+               if (response.data.error.message != undefined) {
+                   this.setState({isRedirect:false,errorMsg:'Серверная ошибка'});
+               }
+           } else if (response.data.result != undefined) {
+               if (response.data.result.token != undefined) {
+                   localStorage.setItem('token', response.data.result.token);
+                   setAuthorizationToken(response.data.result.token);
+                   setCurrentUser({isAuth: true});
+                   this.setState({isRedirect:true});
+               } else {
+                   console.log('no token from server');
+                   this.setState({isRedirect:false,errorMsg:'Серверная ошибка'});
+               }
+           } else {
+               this.setState({isRedirect:false,errorMsg:'Серверная ошибка'});
+           }
+       });
     }
 
     render() {
+        if (this.state.isRedirect) {
+            return <Redirect to='/cabinet'/>;
+        }
         const {errors} = this.state;
         return (
             <div className={mainStyle.modal + ' ' + mainStyle.modalCenter + ' ' + mainStyle.fade}
@@ -94,7 +116,6 @@ class LoginModal extends React.Component {
 
                                 {this.state.errorMsg}
                                 <div className={mainStyle["reg-box"]}>
-
                                     <input className={mainStyle["button"] + ' ' + mainStyle["button--orangeBig"]}
                                            type="submit"
                                            value="Войти"/>
@@ -114,4 +135,4 @@ LoginModal.propTypes = {
     signin: PropTypes.func.isRequired
 };
 
-export default connect(null, {signin})(LoginModal);
+export default connect(null, {signin,setCurrentUser})(LoginModal);

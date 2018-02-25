@@ -14,29 +14,8 @@ export function setCurrentUser(isAuth) {
 export function signin(userData) {
     return dispatch => {
         return new Auth({request: axios})
-            .signin(userData.email, userData.password)
-            .then(response => {
-                if (response.data.error != undefined) {
-                    if (response.data.error.message != undefined) {
-                        return false;
-                    }
-                }else if (response.data.result != undefined) {
-                    if(response.data.result.token != undefined){
-                        localStorage.setItem('token', response.data.result.token);
-                        setAuthorizationToken(response.data.result.token);
-                        dispatch(setCurrentUser({isAuth: true}));
-                    }else{
-                        console.log('no token from server');
-                    }
-                    return true;
-                }else {
-                    return false;
-                }
-
-            });
-
+            .signin(userData.email, userData.password);
     };
-
 }
 
 export function security(securityData) {
@@ -57,7 +36,7 @@ export function logout() {
                 //@TODO: REMOVE TOKEN AND SET STATE USER SIGNOUT
                 localStorage.removeItem('token');
                 setAuthorizationToken(false);
-                dispatch(setCurrentUser({}));
+                dispatch(setCurrentUser({isAuth:false}));
             });
     };
 }
