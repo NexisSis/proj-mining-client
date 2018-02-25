@@ -33,37 +33,32 @@ class RegisterForm extends React.Component {
     onChange(e){
         this.setState({[e.target.name] : e.target.value});
     }
+    returnJson(){
+        return {
+            "jsonrpc": "2.0",
+            "id": 4564,
+            "result": []
+        };
+    }
     onSubmit(e){
         e.preventDefault();
-        var data = {
-            b:[]
-
-
-        };
-        if(this.isValid()){
+        if(this.isValid()) {
             this.props.signup(this.state)().then(response => {
-                if(response.status == 200){
-                    if(response.data.error.message){
-                        this.setState({serverError:response.data.error.message});
-                        if(response.data.error.validation_errors != 'undefined'){
-                            this.setState({errors:response.data.error.validation_errors});
+                if (response.status == 200) {
+                    if (response.data.error != undefined) {
+                        if (response.data.error.message != undefined) {
+                            this.setState({serverError: response.data.error.message});
+                            if (response.data.error.validation_errors != undefined) {
+                                this.setState({errors: response.data.error.validation_errors});
+                            }
                         }
                     }
-                   // console.log(response.data.result != 'undefined');
-                    console.log(response.data);
-                    if(response.data.hasOwnProperty('result')){
-                        console.log(response.data);
-                        console.log('result is here!!');
-                       // this.setState({isRedirect:true});
-                    }else{
-                        console.log(response.data);
-                        console.log('result is NOT here!!');
-
+                    if (response.data.result != undefined) {
+                        this.setState({isRedirect: true});
+                    } else {
+                        this.setState({isRedirect: false});
                     }
                 }
-
-            }).catch(error=>{
-               this.setState({errors:error});
             });
         }
     }
@@ -77,7 +72,6 @@ class RegisterForm extends React.Component {
                 <form class={mainStyle["form"]} onSubmit={this.onSubmit}>
 
                     <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange} type="email" error={errors.email}/>
-
 
                     <div class={mainStyle["reg-box"]}>
                         <span class={mainStyle["reg-box__title"]}>Страна</span>
