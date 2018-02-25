@@ -3,6 +3,7 @@
 
 # development
 /temp
+*.rar
 
 # dependencies
 /node_modules
