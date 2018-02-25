@@ -74,7 +74,7 @@ class RegisterForm extends React.Component {
     callbackRecaptch(){
         this.setState({isCorrectLoading:true});
     }
-    verifyCallbackRecaptch(){
+    verifyCallbackRecaptch(response){
         this.setState({isRecaptch:true});
     }
     render() {

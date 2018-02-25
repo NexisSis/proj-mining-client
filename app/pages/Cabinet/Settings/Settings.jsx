@@ -16,7 +16,7 @@ class Settings extends React.Component {
 
                         <div class={cabinetStyle["cont"]}>
 
-                            <Tabs selectedTabClassName="active">
+                            <Tabs selectedTabClassName={cabinetStyle["active"]}>
                                 <TabList className={cabinetStyle["settings-menu"]}>
                                     <Tab><span>{"Профиль"}</span></Tab>
                                     <Tab><span>{"Кошельки"}</span></Tab>
