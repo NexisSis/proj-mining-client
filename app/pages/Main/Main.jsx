@@ -6,15 +6,15 @@ import {Register} from "app/pages/Register";
 import {Header} from "app/pages/Main";
 import {Footer} from "app/pages/Main";
 import {ContactUs} from "app/pages/ContactUs";
-import {LoginModal, ResetPasswordModal}from "app/pages/Main/components/";
+import {LoginModal, ResetPasswordModal} from "app/pages/Main/components/";
 import RegisterSuccess from "app/pages/RegisterSuccess/RegisterSuccess";
 import Forbidden from "app/pages/Forbidden/";
 import {Confirmation} from "app/pages/Confirmation/";
 import {Opportunities} from "app/pages/Opportunities/Opportunities";
 import {ResetPasswordConfirmation} from "app/pages/ResetPasswordConfirmation";
-import "./assets/css/main.css";
+import mainStyle from "./assets/css/main.css";
 import "./assets/css/libs.css";
-import {menu,page,modals} from "./assets/js/main-site";
+import {menu, page, modals} from "./assets/js/main-site";
 
 class Main extends React.Component {
 
@@ -29,7 +29,7 @@ class Main extends React.Component {
     }
 
     render() {
-
+        const hidden = {display: 'none'};
         return (
             <div>
                 <Header path={this.props.location.pathname}/>
@@ -44,9 +44,10 @@ class Main extends React.Component {
                     <Route path={"/password-confirmation"} component={ResetPasswordConfirmation}/>
                     <Route component={NoMatch}/>
                 </Switch>
-                <Footer />
-                <LoginModal />
-                <ResetPasswordModal />
+                <Footer/>
+                <LoginModal/>
+                <ResetPasswordModal/>
+                <div className={mainStyle["modal-backdrop"] + " " + mainStyle.fade} style={hidden}/>
             </div>
         );
     }

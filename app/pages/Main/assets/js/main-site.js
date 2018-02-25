@@ -167,38 +167,40 @@ let modals = {};
 modals.init = function () {
     $("body").on("click", function (event) {
         if ($("div." + mainStyle["modal-backdrop"] + '.' + mainStyle.fade + '.' + mainStyle.in).length) {
-            if($("#login").hasClass(mainStyle.in)) {
-                $("#login").fadeOut().removeClass(mainStyle.in);
-            } else if($("#reset-password").hasClass(mainStyle.in)) {
-                $("#reset-password").fadeOut().removeClass(mainStyle.in);
+            if(!$(event.target).attr("data-target") && !$(event.target).closest(mainStyle.modal).length) {
+                $("div." + mainStyle["modal-backdrop"] + "." +  mainStyle.fade + "." + mainStyle.in).fadeOut().hide().removeClass(mainStyle.in);
+                $("#login").fadeOut().hide().removeClass(mainStyle.in);
+                $("#reset-password").fadeOut().hide().removeClass(mainStyle.in);
             }
         }
     });
 
     $("body").on("click", '[data-target="#login"]', function (event) {
-        $("#login").modal("show").fadeIn().show();
+        $("#login").fadeIn().show().addClass(mainStyle.in);
+        $("div." + mainStyle["modal-backdrop"] + "." +  mainStyle.fade).fadeIn().show().addClass(mainStyle.in);
     });
     $("body").on("click", '[data-target="#reset-password"]', function (event) {
-        $("#reset-password").modal("show").fadeIn().show();
+        $("#login").fadeOut().hide().removeClass(mainStyle.in);
+        $("#reset-password").fadeIn().show().addClass(mainStyle.in);
     });
 
 
-    $("#reset-password").on("show.bs.modal", function (event) {
-        if(event.target.id === "login"){
-            $("#login").removeClass("in").addClass(mainStyle.in);
-        } else if(event.target.id === "reset-password"){
-            $("#login").modal("hide");
-            $("#reset-password").removeClass("in").addClass(mainStyle.in);
-        }
-
-    });
-    $("#login, #reset-password").on("hide.bs.modal", function(event) {
-        if(event.target.id === "reset-password") {
-            $("#reset-password").removeClass(mainStyle.in).fadeOut();
-        } else {
-            $("#login").fadeOut().removeClass(mainStyle.in);
-        }
-    });
+    // $("#reset-password").on("show.bs.modal", function (event) {
+    //     if(event.target.id === "login"){
+    //         $("#login").removeClass("in").addClass(mainStyle.in);
+    //     } else if(event.target.id === "reset-password"){
+    //         $("#login").modal("hide");
+    //         $("#reset-password").removeClass("in").addClass(mainStyle.in);
+    //     }
+    //
+    // });
+    // $("#login, #reset-password").on("hide.bs.modal", function(event) {
+    //     if(event.target.id === "reset-password") {
+    //         $("#reset-password").removeClass(mainStyle.in).fadeOut();
+    //     } else {
+    //         $("#login").fadeOut().removeClass(mainStyle.in);
+    //     }
+    // });
 };
 
 export {menu, page, modals};

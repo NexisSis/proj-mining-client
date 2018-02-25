@@ -11,7 +11,6 @@ class Header extends React.Component {
             name: 'Облачный майнинг'
         };
 
-
     }
 
     componentWillMount() {
@@ -22,6 +21,7 @@ class Header extends React.Component {
         this.resolvePath(nextProps.path);
     }
 
+    //REFFACTOR. SET UP HEADER PARAMETERS BY PASSING THROUGH EACH COMPONENT
     resolvePath(path) {
         switch (path) {
             case '/': {
@@ -138,8 +138,8 @@ class Header extends React.Component {
                                 </div>
 
                                 <ul className={mainStyle["reg-menu"]}>
-                                    <li><a className={mainStyle.button} href="javascript:void(0)" data-toggle="modal"
-                                           data-target="#login">Войти</a></li>
+                                    <li><Link className={mainStyle.button} to="javascript:void(0)" data-toggle={mainStyle.modal}
+                                           data-target="#login" onClick={(e) => e.preventDefault()}>Войти</Link></li>
                                     <li><Link to={'register'}
                                               className={mainStyle.button + ' ' + mainStyle["button--orange"]}>Регистрация</Link>
                                     </li>

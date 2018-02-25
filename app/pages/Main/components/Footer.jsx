@@ -99,6 +99,7 @@ class Footer extends React.Component {
                     </div>
 
                 </footer>
+
             </div>
 
         );

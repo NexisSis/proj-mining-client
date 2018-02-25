@@ -8,92 +8,102 @@ import Recaptcha from "react-recaptcha";
 
 class RegisterForm extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            email:'asd@mail.ru',
-            password:'12345678',
-            passwordConfirmation:'12345678',
-            country:'Germany',
-            errors:{},
-            isCorrectLoading:false,
-            isRedirect:false,
-            serverError:"",
-            isRecaptch:false
+        this.state = {
+            email: 'asd@mail.ru',
+            password: '12345678',
+            passwordConfirmation: '12345678',
+            country: 'Germany',
+            errors: {},
+            isCorrectLoading: false,
+            isRedirect: false,
+            serverError: "",
+            isRecaptch: false
 
-        }
+        };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.verifyCallbackRecaptch = this.verifyCallbackRecaptch.bind(this);
         this.callbackRecaptch = this.callbackRecaptch.bind(this);
     }
-    isValid(){
-        const {errors,isValid} = validateInput((this.state));
-        if(!isValid){
+
+    isValid() {
+        const {errors, isValid} = validateInput((this.state));
+        if (!isValid) {
             this.setState({errors});
         }
         return isValid;
     }
-    onChange(e){
-        this.setState({[e.target.name] : e.target.value});
+
+    onChange(e) {
+        this.setState({[e.target.name]: e.target.value});
     }
-    returnJson(){
+
+    returnJson() {
         return {
             "jsonrpc": "2.0",
             "id": 4564,
             "result": []
         };
     }
-    onSubmit(e){
+
+    onSubmit(e) {
         e.preventDefault();
-        if(this.isValid() && this.state.isRecaptch) {
-            this.setState({isCorrectLoading:false});
+        if (this.isValid() && this.state.isRecaptch) {
+            this.setState({isCorrectLoading: false});
+            //MOVE OUT TO ACTION
             this.props.signup(this.state)().then(response => {
-                if (response.status == 200) {
-                    if (response.data.error != undefined) {
-                        if (response.data.error.message != undefined) {
-                            this.setState({serverError: response.data.error.message});
-                            if (response.data.error.validation_errors != undefined) {
-                                this.setState({errors: response.data.error.validation_errors});
+                    if (response.status === 200) {
+                        if (response.data.error !== undefined) {
+                            if (response.data.error.message !== undefined) {
+                                this.setState({serverError: response.data.error.message});
+                                if (response.data.error.validation_errors !== undefined) {
+                                    this.setState({errors: response.data.error.validation_errors});
+                                }
                             }
                         }
+                        if (response.data.result !== undefined) {
+                            this.setState({isRedirect: true});
+                        } else {
+                            this.setState({isRedirect: false});
+                        }
                     }
-                    if (response.data.result != undefined) {
-                        this.setState({isRedirect: true});
-                    } else {
-                        this.setState({isRedirect: false});
-                    }
+                    this.setState({isCorrectLoading: true});
                 }
-                this.setState({isCorrectLoading:true});
-            }
-        );
-        }else{
-            this.setState({serverError:'Заполните все поля корректно!'});
+            );
+        } else {
+            this.setState({serverError: 'Заполните все поля корректно!'});
         }
     }
-    callbackRecaptch(){
-        this.setState({isCorrectLoading:true});
+
+    callbackRecaptch() {
+        this.setState({isCorrectLoading: true});
     }
-    verifyCallbackRecaptch(response){
-        this.setState({isRecaptch:true});
+
+    verifyCallbackRecaptch(response) {
+        this.setState({isRecaptch: true});
     }
+
     render() {
-        if(this.state.isRedirect){
-            return <Redirect to='/register-success' />;
+        if (this.state.isRedirect) {
+            return <Redirect to='/register-success'/>;
         }
         const {errors} = this.state;
         return (
             <div>
                 <form class={mainStyle["form"]} onSubmit={this.onSubmit}>
 
-                    <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange} type="email" error={errors.email}/>
+                    <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange}
+                                    type="email" error={errors.email}/>
 
                     <div class={mainStyle["reg-box"]}>
                         <span class={mainStyle["reg-box__title"]}>Страна</span>
                         <div class={mainStyle["reg-box__value"]}>
 
                             <div class={mainStyle["select"]}>
-                                <select class={mainStyle["selectpicker"]} value={this.state.country} onChange={this.onChange} name="country">
+                                <select class={mainStyle["selectpicker"]} value={this.state.country}
+                                        onChange={this.onChange} name="country">
                                     <option>Китай</option>
                                     <option>Япония</option>
                                     <option>Польша</option>
@@ -107,9 +117,12 @@ class RegisterForm extends React.Component {
                         </div>
                     </div>
 
-                    <TextFieldGroup field="password" value={this.state.password} label={"Пароль"} onChange={this.onChange} type="password" error={errors.password}/>
+                    <TextFieldGroup field="password" value={this.state.password} label={"Пароль"}
+                                    onChange={this.onChange} type="password" error={errors.password}/>
 
-                    <TextFieldGroup field="passwordConfirmation" value={this.state.passwordConfirmation} label={"Повторить пароль"} onChange={this.onChange} type="password" error={errors.passwordConfirmation}/>
+                    <TextFieldGroup field="passwordConfirmation" value={this.state.passwordConfirmation}
+                                    label={"Повторить пароль"} onChange={this.onChange} type="password"
+                                    error={errors.passwordConfirmation}/>
 
                     <div class={mainStyle["reg-box"]}>
 
@@ -118,13 +131,14 @@ class RegisterForm extends React.Component {
                             render="explicit"
                             verifyCallback={this.verifyCallbackRecaptch}
                             onloadCallback={this.callbackRecaptch}
-                            />
+                        />
 
                     </div>
 
                     <div class={mainStyle["reg-box"]}>
                         <p>{this.state.serverError}</p>
-                        <input class={mainStyle["button"] + ' ' + mainStyle["button--orangeBig"]} type="submit" value="Зарегистрироваться" disabled={!this.state.isCorrectLoading} />
+                        <input class={mainStyle["button"] + ' ' + mainStyle["button--orangeBig"]} type="submit"
+                               value="Зарегистрироваться" disabled={!this.state.isCorrectLoading}/>
 
                     </div>
 
@@ -134,8 +148,8 @@ class RegisterForm extends React.Component {
     }
 }
 
-RegisterForm.propTypes={
-    signup:PropTypes.func.isRequired
-}
+RegisterForm.propTypes = {
+    signup: PropTypes.func.isRequired
+};
 
 export default RegisterForm;
