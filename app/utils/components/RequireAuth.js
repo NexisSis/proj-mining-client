@@ -12,7 +12,6 @@ export default function(ComposedComponent) {
         }
         componentWillMount() {
             if (!this.props.isAuthenticated) {
-                console.log('is Auth is so bad');
                 this.setState({isRedirect:true});
             }
         }
