@@ -111,7 +111,7 @@ class Header extends React.Component {
                             <Link className={mainStyle.logo} to="/"/>
 
                             <ul className={mainStyle.menu}>
-                                <li><Link to="/opportunities">Возможности</Link></li>
+                                <li><a href="javascript:void(0)">Возможности</a></li>
                                 <li><a href="javascript:void(0)">Цена</a></li>
                                 <li><span>Что это?</span>
                                     <ul>
