@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import validateInput from "app/components/ValidationSignUp";
 import {Redirect} from "react-router-dom";
 import mainStyle from "app/pages/Main/assets/css/main.css";
-import Recaptcha from "react-recaptcha";
 import {connect} from "react-redux";
+import Recaptcha from "app/components/Recaptcha";
 
 class RegisterForm extends React.Component {
 
@@ -17,7 +17,7 @@ class RegisterForm extends React.Component {
             passwordConfirmation: '12345678',
             country: 'Germany',
             errors: {},
-            isCorrectLoading: false,
+            isCorrectLoading: true,
             isRedirect: false,
             serverError: "",
             isRecaptch: false
@@ -26,7 +26,6 @@ class RegisterForm extends React.Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.verifyCallbackRecaptch = this.verifyCallbackRecaptch.bind(this);
-        this.callbackRecaptch = this.callbackRecaptch.bind(this);
     }
 
     isValid() {
@@ -77,13 +76,10 @@ class RegisterForm extends React.Component {
             this.setState({serverError: 'Заполните все поля корректно!'});
         }
     }
-
-    callbackRecaptch() {
-        this.setState({isCorrectLoading: true});
-    }
-
     verifyCallbackRecaptch(response) {
         this.setState({isRecaptch: true});
+        console.log('hello from recaptch');
+
     }
 
     render() {
@@ -128,11 +124,9 @@ class RegisterForm extends React.Component {
                     <div class={mainStyle["reg-box"]}>
 
                         <Recaptcha
-                            sitekey="6LfCYUgUAAAAAK6pX0xWrAnKi0VJIrxT92b1UqyK"
-                            render="explicit"
-                            verifyCallback={this.verifyCallbackRecaptch}
-                            onloadCallback={this.callbackRecaptch}
-                        />
+                            ref={ ref => this.recaptcha = ref }
+                            sitekey={'6LfCYUgUAAAAAK6pX0xWrAnKi0VJIrxT92b1UqyK'}
+                            onResolved={this.verifyCallbackRecaptch } />
 
                     </div>
 

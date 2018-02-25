@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import {Redirect} from "react-router-dom";
 import setAuthorizationToken from "app/utils/setAuthorizationToken";
-
+import Recaptcha from "app/components/Recaptcha";
 class LoginModal extends React.Component {
     constructor(props) {
         super(props);
@@ -19,39 +19,51 @@ class LoginModal extends React.Component {
             rememberMe: false,
             isLoading: false,
             errorMsg:'',
-            isRedirect:false
+            isRedirect:false,
+            isRecaptch:false
 
         };
         console.log(this.context);
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-    }
+        this.verifyCallbackRecaptch = this.verifyCallbackRecaptch.bind(this);
 
+    }
+    verifyCallbackRecaptch(response) {
+        this.setState({isRecaptch: true});
+        console.log('hello from recaptch');
+    }
     onChange(e) {
         this.setState({[e.target.name]: e.target.value});
     }
 
     onSubmit(e) {
         e.preventDefault();
-       signin(this.state)().then(response => {
-           if (response.data.error != undefined) {
-               if (response.data.error.message != undefined) {
-                   this.setState({isRedirect:false,errorMsg:'Серверная ошибка'});
-               }
-           } else if (response.data.result != undefined) {
-               if (response.data.result.token != undefined) {
-                   localStorage.setItem('token', response.data.result.token);
-                   setAuthorizationToken(response.data.result.token);
-                   setCurrentUser({isAuth: true});
-                   this.setState({isRedirect:true});
-               } else {
-                   console.log('no token from server');
-                   this.setState({isRedirect:false,errorMsg:'Серверная ошибка'});
-               }
-           } else {
-               this.setState({isRedirect:false,errorMsg:'Серверная ошибка'});
-           }
-       });
+        if(this.state.isRecaptch){
+            signin(this.state)().then(response => {
+                if (response.data.error != undefined) {
+                    if (response.data.error.message != undefined) {
+                        this.setState({isRedirect:false,errorMsg:'Ошибка'});
+                    }
+                } else if (response.data.result != undefined) {
+                    if (response.data.result.token != undefined) {
+                        localStorage.setItem('token', response.data.result.token);
+                        setAuthorizationToken(response.data.result.token);
+                        setCurrentUser({isAuth: true});
+                        this.setState({isRedirect:true});
+                    } else {
+                        console.log('no token from server');
+                        this.setState({isRedirect:false,errorMsg:'Серверная ошибка'});
+                    }
+                } else {
+                    this.setState({isRedirect:false,errorMsg:'Серверная ошибка'});
+                }
+            });
+        }else{
+            this.setState({isRedirect:false,errorMsg:'Заполните все поля корректно!'});
+        }
+
+
     }
 
     render() {
@@ -108,10 +120,10 @@ class LoginModal extends React.Component {
                                 </div>
 
                                 <div className={mainStyle["reg-box"]}>
-
-                                    <div className={mainStyle["reg-captcha"]}>
-                                        <span className={mainStyle["reg-captcha__text"]}><b>captcha</b></span>
-                                    </div>
+                                    <Recaptcha
+                                        ref={ ref => this.recaptcha = ref }
+                                        sitekey={'6LfCYUgUAAAAAK6pX0xWrAnKi0VJIrxT92b1UqyK'}
+                                        onResolved={this.verifyCallbackRecaptch} />
                                 </div>
 
                                 {this.state.errorMsg}
