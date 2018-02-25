@@ -6,26 +6,27 @@ import qs from 'qs';
      constructor(props){
          super(props);
          this.state ={
-             isError:false,
+             isError:true,
              message:""
-         };
+     };
      }
      componentWillMount(){
          var decodeToken = this.parseToken(this.props.location.search);
          if(decodeToken != undefined){
              confirm(decodeToken)().then(response=>{
-                 if(response.data.result != undefined){
-                     //this.setState({isError:false});
+                 if(response.data.error != undefined){
+                     if(response.data.error.message != undefined){
+                         this.setState({message:response.data.error.message});
+                     }
                  }
-                 else if(response.data.error.message != undefined){
-                        this.setState({message:response.data.error.message});
-                 }else{
-                     this.setState({isError:true});
+                 else if (response.data.result != undefined) {
+                     this.setState({isError: false});
+                 } else {
+                     this.setState({isError: true});
                  }
-                console.log(response);
              });
          }else{
-             this.setState({isError:true});
+             this.setState({isError:true, message:"Серверная ошибка"});
          }
      }
      parseToken(decodeToken){

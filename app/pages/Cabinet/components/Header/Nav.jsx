@@ -16,7 +16,7 @@ class Nav extends React.Component {
     }
 
     isActive(id) {
-        return (this.state.isActive === id) ? 'active' : '';
+       // return (this.state.isActive === id) ? cabinetStyle['active'] : '';
     }
 
     setActive(id) {
@@ -33,8 +33,8 @@ class Nav extends React.Component {
             return <Redirect to='/' />;
         }
         const nav = [
-            {class: 'menu-buy', name: 'Купить хешрейт', href: '/cabinet/'},
-            {class: 'menu-room', name: 'Личный кабинет', href: '/cabinet/'},
+            {class: 'menu-buy', name: 'Купить хешрейт', href: '/cabinet'},
+            {class: 'menu-room', name: 'Личный кабинет', href: '/cabinet'},
             {class: 'menu-history', name: 'История', href: '/cabinet/history'},
             {class: 'menu-voucher', name: 'Ваучер', href: '/cabinet'},
             {class: 'menu-referrals', name: 'Рефералы', href: '/cabinet'},
@@ -44,10 +44,17 @@ class Nav extends React.Component {
         ];
         const tabs = nav.map(function (el, i) {
             return <li key={i}
-                       class={cabinetStyle[el.class] + ' ' + cabinetStyle[this.isActive(i)]} onClick={() => this.setActive(i)}>
+                       class={cabinetStyle[el.class] + ' ' + this.isActive(i)} onClick={() => this.setActive(i)}>
                 <NavLink href={el.href} name={el.name}/>
             </li>;
         }, this);
+        /*  const tabs = nav.map(function(el,i){
+            return <li key={i}
+                       class={el.class + ' ' + this.isActive(i)} onClick={()=>this.setActive(i)}>
+                       <NavLink href={el.href} name={el.name} />
+                    </li>
+        },this);
+        */
         return (
             <div>
                 <ul class={cabinetStyle["menu"]}>
