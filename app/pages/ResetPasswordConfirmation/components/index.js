@@ -1,0 +1,1 @@
+export {ResetPasswordConfirmationForm} from "./ResetPasswordConfirmationForm";
