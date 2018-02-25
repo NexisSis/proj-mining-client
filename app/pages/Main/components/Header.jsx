@@ -11,6 +11,8 @@ class Header extends React.Component {
             name: 'Облачный майнинг'
         };
 
+        this.onLanguageClick = this.onLanguageClick.bind(this);
+
     }
 
     componentWillMount() {
@@ -19,6 +21,10 @@ class Header extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         this.resolvePath(nextProps.path);
+    }
+
+    componentDidMount() {
+
     }
 
     //REFFACTOR. SET UP HEADER PARAMETERS BY PASSING THROUGH EACH COMPONENT
@@ -76,6 +82,12 @@ class Header extends React.Component {
         }
     }
 
+
+    onLanguageClick(event) {
+        console.log(event);
+    }
+
+
     render() {
         let clouds = '';
         if (this.state.isIndex) {
@@ -131,9 +143,9 @@ class Header extends React.Component {
 
                                 <div className={mainStyle.language}>
                                     <span className={mainStyle.language__current}>RU</span>
-                                    <ul className={mainStyle.language__list}>
-                                        <li><a href="javascript:void(0)">RU</a></li>
-                                        <li><a href="javascript:void(0)">EN</a></li>
+                                    <ul className={mainStyle.language__list} onChange={this.onLanguageClick}>
+                                        <li><a onClick={this.onLanguageClick} href="javascript:void(0)">RU</a></li>
+                                        <li><a onClick={this.onLanguageClick} href="javascript:void(0)">EN</a></li>
                                     </ul>
                                 </div>
 

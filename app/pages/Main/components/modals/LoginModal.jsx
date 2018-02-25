@@ -1,10 +1,11 @@
 import React from 'react';
-import TextFieldGroup from "app/utils/components/TextFieldGroup";
+import RegFieldGroup from "app/utils/components/RegFieldGroup";
 import {signin} from "app/store/actions/user/authetication";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import mainStyle from "app/pages/Main/assets/css/main.css";
 import {Link} from "react-router-dom";
+import {FormattedMessage} from "react-intl";
 
 
 class LoginModal extends React.Component {
@@ -14,7 +15,7 @@ class LoginModal extends React.Component {
             email: '',
             password: '',
             errors: {},
-            isRemember: false,
+            rememberMe: false,
             isLoading: false,
             errorMsg:''
 
@@ -57,26 +58,36 @@ class LoginModal extends React.Component {
 
                             <form className={mainStyle["form"]} onSubmit={this.onSubmit}>
 
-                                <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"}
-                                                onChange={this.onChange} type="email" error={errors.email}
-                                                placeholder="cloudminer@mail.com"
-                                                required='true'/>
+                                <RegFieldGroup field="email" value={this.state.email} label={"Эл. почта"}
+                                               onChange={this.onChange} type="email" error={errors.email}
+                                               placeholder="cloudminer@mail.com"
+                                               required='true'/>
 
-                                <TextFieldGroup field="password" value={this.state.password} label={"Пароль"}
-                                                onChange={this.onChange} type="password" error={errors.password}
-                                                required='true'/>
+                                <RegFieldGroup field="password"
+                                               value={this.state.password}
+                                               label={"Пароль"}
+                                               onChange={this.onChange} type="password" error={errors.password}
+                                               required='true'/>
 
                                 <div className={mainStyle["reg-box"] + " " + mainStyle.checkbox}>
-                                    <input id="checkbox_01" className={mainStyle["inputCheckbox"]} type="checkbox"/>
+                                    <input id={mainStyle["checkbox_01"]}
+                                           className={mainStyle["inputCheckbox"]}
+                                           type="checkbox"
+                                           name={"rememberMe"}
+                                           onChange={this.onChange}
+                                           checked={false}/>
                                     <label htmlFor="checkbox_01"
                                            className={mainStyle["reg-box__title_checkbox"]}>Запомнить</label>
+                                    <a href="javascript:void(0)"
+                                          className={mainStyle["reg-forgot__text"] + " " + mainStyle["pull-right"]}
+                                          data-toggle="modal"
+                                          data-target="#reset-password">
+                                        <FormattedMessage
+                                            id="main.forgetPassword"
+                                            defaultMessage="Забыли пароль ?"/>
+                                    </a>
                                 </div>
-                                <Link to="javascript:void(0)"
-                                      className={mainStyle["reg-forgot__text"] + " " + mainStyle["pull-right"]}
-                                      data-toggle="modal"
-                                      data-target="#reset-password">
-                                    Забыли пароль
-                                </Link>
+
                                 <div className={mainStyle["reg-box"]}>
 
                                     <div className={mainStyle["reg-captcha"]}>
