@@ -5,6 +5,7 @@ import validateInput from "app/components/ValidationSignUp";
 import {Redirect} from "react-router-dom";
 import mainStyle from "app/pages/Main/assets/css/main.css";
 import Recaptcha from "react-recaptcha";
+import {connect} from "react-redux";
 
 class RegisterForm extends React.Component {
 

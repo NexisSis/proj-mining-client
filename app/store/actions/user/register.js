@@ -1,6 +1,6 @@
 import {RegisterConstants} from "app/store/constants";
 import axios from 'axios';
-import {Register} from "app/services";
+import Register from "app/services/Register";
 import {Host, Port} from "api";
 
 export const actions = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "react-router-dom";
 
 export default class RegisterSuccess extends React.Component{
     constructor(props) {
@@ -15,9 +16,12 @@ export default class RegisterSuccess extends React.Component{
             marginBottom: '372px'
 
         };
-        const domain = this.state.email.split("@").pop().pop();
+       // const domain = this.state.email.split("@").pop().pop();
+       // <h1 style={style}>Поздравляю! Вы успешно зарегестрировались. Проверьте <Link to={domain}>почту</Link> для подтверждения регистрации</h1>
+
         return (
-            <h1 style={style}>Поздравляю! Вы успешно зарегестрировались. Проверьте <Link to={domain}>почту</Link> для подтверждения регистрации</h1>
+            <h1 style={style}>Поздравляю! Вы успешно зарегестрировались.</h1>
+
         );
     }
 }
