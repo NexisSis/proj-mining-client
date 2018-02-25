@@ -10,31 +10,31 @@ class Register extends React.Component {
         super(props);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         $('.selectpicker').selectpicker();
     }
-
 
 
     render() {
         return (
             <div>
-                <div class={mainStyle["reg"]}>
+                <div className={mainStyle.reg}>
 
-                    <div class={mainStyle["container-fluid"]}>
-                        <div class={mainStyle["reg-cont"]}>
+                    <div className={mainStyle["container-fluid"]}>
+                        <div className={mainStyle["reg-cont"]}>
                             <RegisterForm signup={signup}/>
                         </div>
                     </div>
                 </div>
-                <div class={mainStyle["hFooter"]}></div>
+                <div className={mainStyle.hFooter}/>
             </div>
         );
     }
 }
-Register.propTypes ={
-    signup:PropTypes.func.isRequired
-}
+
+Register.propTypes = {
+    signup: PropTypes.func.isRequired
+};
 
 
-export default connect(null,{signup})(Register);
+export default connect(null, {signup})(Register);

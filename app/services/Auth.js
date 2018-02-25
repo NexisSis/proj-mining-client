@@ -5,12 +5,23 @@ export default class Auth extends JsonRpc {
         super(props);
     }
 
-    auth(email,password) {
-        console.log(email,password,this.buildUrl());
+    signin(email, password) {
+        console.log(email,password,JsonRpc.buildUrl());
         return this.request("auth.signin",{
             email: email,
             password: password
-        },this.getId());
+        }, this.getId());
+    }
+
+    security(token,code) {
+        return this.request("auth.security",{
+            token: token,
+            code: code,
+        }, this.getId());
+    }
+
+    signout() {
+        return this.request("auth.signout",{},this.getId());
     }
 
 }

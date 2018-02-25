@@ -18,7 +18,7 @@ export default function(ComposedComponent) {
         render() {
             if(this.state.isRedirect){
                 return (
-                    <Redirect to='/login-bad' />
+                    <Redirect to='/forbidden' />
                 );
             }
             return (
@@ -29,7 +29,7 @@ export default function(ComposedComponent) {
 
     Authenticate.propTypes = {
         isAuthenticated: PropTypes.bool.isRequired
-    }
+    };
 
 
     function mapStateToProps(state) {
