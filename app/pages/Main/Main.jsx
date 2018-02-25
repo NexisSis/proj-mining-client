@@ -8,7 +8,7 @@ import {Footer} from "app/pages/Main";
 import {ContactUs} from "app/pages/ContactUs";
 import {LoginModal, ResetPasswordModal} from "app/pages/Main/components/";
 import RegisterSuccess from "app/pages/RegisterSuccess/RegisterSuccess";
-import Forbidden from "app/pages/Forbidden/";
+import Forbidden from "app/pages/Forbidden/Forbidden";
 import {Confirmation} from "app/pages/Confirmation/";
 import {Opportunities} from "app/pages/Opportunities/Opportunities";
 import {ResetPasswordConfirmation} from "app/pages/ResetPasswordConfirmation";
