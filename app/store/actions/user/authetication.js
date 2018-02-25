@@ -16,12 +16,25 @@ export function signin(userData) {
         return new Auth({request: axios})
             .signin(userData.email, userData.password)
             .then(response => {
-                console.log(user);
-                localStorage.setItem('token', 'testtokeeeen');
-                setAuthorizationToken('testtokeeeen');
-                dispatch(setCurrentUser({isAuth: true}));
-                return true;
+                if (response.data.error != undefined) {
+                    if (response.data.error.message != undefined) {
+                        return false;
+                    }
+                }else if (response.data.result != undefined) {
+                    if(response.data.result.token != undefined){
+                        localStorage.setItem('token', response.data.result.token);
+                        setAuthorizationToken(response.data.result.token);
+                        dispatch(setCurrentUser({isAuth: true}));
+                    }else{
+                        console.log('no token from server');
+                    }
+                    return true;
+                }else {
+                    return false;
+                }
+
             });
+
     };
 
 }

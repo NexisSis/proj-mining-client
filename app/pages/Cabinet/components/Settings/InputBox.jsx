@@ -11,8 +11,6 @@ class InputBox extends React.Component {
                 </div>
             );
         } else if (this.props.isBirth) {
-
-
             userInputType = (
                 <div class={cabinetStyle["dateBirth"]}>
                     <div class={cabinetStyle["dateBirth__box"] + cabinetStyle["dateBirth__box--month"]}>

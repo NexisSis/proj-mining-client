@@ -16,7 +16,7 @@ class Nav extends React.Component {
     }
 
     isActive(id) {
-        return (this.state.isActive === id) ? cabinetStyle['active'] : '';
+        //return (this.state.isActive === id) ? cabinetStyle['active'] : '';
     }
 
     setActive(id) {

@@ -15,7 +15,8 @@ class LoginModal extends React.Component {
             password: '',
             errors: {},
             isRemember: false,
-            isLoading: false
+            isLoading: false,
+            errorMsg:''
 
         };
         this.onChange = this.onChange.bind(this);
@@ -28,8 +29,8 @@ class LoginModal extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
-        if (this.props.signin(this.state)) {
-            console.log(this.props.history);
+        if (!this.props.signin(this.state)) {
+            this.setState({errorMsg:'Неправильный логин или пароль'});
         }
     }
 
@@ -51,8 +52,7 @@ class LoginModal extends React.Component {
                     <div className={mainStyle["modal-content"]}>
                         <div className={mainStyle["modal-body"]}>
 
-                            <div
-                                className={mainStyle["titleBox"] + ' ' + mainStyle["titleBox--alignment"] + ' ' + mainStyle["titleModal"]}>
+                            <div className={mainStyle["titleBox"] + ' ' + mainStyle["titleBox--alignment"] + ' ' + mainStyle["titleModal"]}>
                                 <h4>Вход</h4></div>
 
                             <form className={mainStyle["form"]} onSubmit={this.onSubmit}>
@@ -82,15 +82,14 @@ class LoginModal extends React.Component {
                                     <div className={mainStyle["reg-captcha"]}>
                                         <span className={mainStyle["reg-captcha__text"]}><b>captcha</b></span>
                                     </div>
-
                                 </div>
 
+                                {this.state.errorMsg}
                                 <div className={mainStyle["reg-box"]}>
 
                                     <input className={mainStyle["button"] + ' ' + mainStyle["button--orangeBig"]}
                                            type="submit"
                                            value="Войти"/>
-
                                 </div>
 
                             </form>

@@ -14,10 +14,11 @@ class Panel extends React.Component {
 
                 <div class={cabinetStyle["informers-block"]}>
                     <div class={cabinetStyle["cont"]}>
-                        <Notification type={"info"} text={"Info text"}/>
-                        <Notification type={"yellow"} text={"Warning text"}/>
-                        <Notification type={"red"} text={"error text"}/>
-                        <Notification type={"green"} text={"Success text"}/>
+                        <Notification type={"info"} text={"<p>Уважаемые пользователи, Метод оплаты банковским переоводом временно доступен только при заказе свыше 500 USD. Все инвойсы в нашей системе генерируются в USD, однако, в данный момент мы принимаем банковские переводы только в EUR по обменному курсу здесь: <a href=\"javascript:void(0)\">http://www.eestipank.ee/en/exchange-rates</a></p>\n" +
+                        "                            <p>Все заказы, оплаченные до этого момента в USD, будут активированы при поступлении платежа на наш банковский счет.</p>"}/>
+                        <Notification type={"yellow"} text={'<p>Внимание! У Вас нет купленного хэшрейта, необходимо купить хэшрейт <a href="javascript:void(0)">SHA-256</a> или <a href="javascript:void(0)">Scrypt</a> хэшрейт</p>'}/>
+                        <Notification type={"red"} text={"<p>Чтобы успешно вывести средства, пожалуйста, добавьте адрес кошелька BTC в <a href=\"javascript:void(0)\">своем профиле</a></p>"}/>
+                        <Notification type={"green"} text={"<p>Чтобы успешно вывести средства, пожалуйста, добавьте адрес кошелька BTC в <a href=\"javascript:void(0)\">своем профиле</a></p>"}/>
                     </div>
                 </div>
                 <div class={cabinetStyle["technical-offers"]}>

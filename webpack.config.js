@@ -20,19 +20,19 @@ module.exports = {
     entry: "./app/index.js",
     module: {
         rules: [
-            {
-                test: require.resolve('jquery'),
-                use: [
-                    {
-                        loader: 'expose-loader',
-                        options: '$'
-                    },
-                    {
-                        loader: 'expose-loader',
-                        options: 'jQuery'
-                    }
-                ]
-            },
+      //      {
+       //         test: require.resolve('jquery'),
+         //       use: [
+           //         {
+               //         loader: 'expose-loader',
+             //           options: '$'
+                 //   },
+                   // {
+                       // loader: 'expose-loader',
+                     //   options: 'jQuery'
+                    //}
+                //]
+           // },
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,

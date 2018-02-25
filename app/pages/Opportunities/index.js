@@ -1,1 +1,1 @@
-export {Opportunities} from "./Opportunities";
+export Opportunities from "./Opportunities";
