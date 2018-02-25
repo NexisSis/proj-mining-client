@@ -66,7 +66,7 @@ class Header extends React.Component {
                 this.setState({
                     path: path,
                     isIndex: false,
-                    name: 'Логин'
+                    name: 'Доступ запрещен'
                 });
                 break;
             }

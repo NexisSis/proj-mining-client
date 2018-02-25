@@ -1,7 +1,7 @@
 import React from "react";
-import TextFieldGroup from "app/utils/components/RegFieldGroup";
+import RegFieldGroup from "app/components/RegFieldGroup";
 import PropTypes from "prop-types";
-import validateInput from "app/utils/components/ValidationSignUp";
+import validateInput from "app/components/ValidationSignUp";
 import {Redirect} from "react-router-dom";
 import mainStyle from "app/pages/Main/assets/css/main.css";
 import Recaptcha from "react-recaptcha";
@@ -94,8 +94,8 @@ class RegisterForm extends React.Component {
             <div>
                 <form class={mainStyle["form"]} onSubmit={this.onSubmit}>
 
-                    <TextFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange}
-                                    type="email" error={errors.email}/>
+                    <RegFieldGroup field="email" value={this.state.email} label={"Эл. почта"} onChange={this.onChange}
+                                   type="email" error={errors.email}/>
 
                     <div class={mainStyle["reg-box"]}>
                         <span class={mainStyle["reg-box__title"]}>Страна</span>
@@ -117,12 +117,12 @@ class RegisterForm extends React.Component {
                         </div>
                     </div>
 
-                    <TextFieldGroup field="password" value={this.state.password} label={"Пароль"}
-                                    onChange={this.onChange} type="password" error={errors.password}/>
+                    <RegFieldGroup field="password" value={this.state.password} label={"Пароль"}
+                                   onChange={this.onChange} type="password" error={errors.password}/>
 
-                    <TextFieldGroup field="passwordConfirmation" value={this.state.passwordConfirmation}
-                                    label={"Повторить пароль"} onChange={this.onChange} type="password"
-                                    error={errors.passwordConfirmation}/>
+                    <RegFieldGroup field="passwordConfirmation" value={this.state.passwordConfirmation}
+                                   label={"Повторить пароль"} onChange={this.onChange} type="password"
+                                   error={errors.passwordConfirmation}/>
 
                     <div class={mainStyle["reg-box"]}>
 

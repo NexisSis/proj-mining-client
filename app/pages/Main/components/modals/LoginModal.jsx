@@ -1,5 +1,5 @@
 import React from 'react';
-import RegFieldGroup from "app/utils/components/RegFieldGroup";
+import RegFieldGroup from "app/components/RegFieldGroup";
 import {signin} from "app/store/actions/user/authetication";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -37,9 +37,6 @@ class LoginModal extends React.Component {
 
     render() {
         const {errors} = this.state;
-        const resetPasswordStyle = {
-            marginTop: "3 px"
-        };
         return (
             <div className={mainStyle.modal + ' ' + mainStyle.modalCenter + ' ' + mainStyle.fade}
                  id="login"

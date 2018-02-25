@@ -7,7 +7,7 @@ import {store, history} from "app/store";
 import CabinetMain from "app/pages/Cabinet/Main/Main";
 import Main from "app/pages/Main/Main";
 import {ConnectedRouter} from "react-router-redux";
-import RequireAuth from "app/utils/components/RequireAuth";
+import RequireAuth from "app/components/RequireAuth";
 import setAuthorizationToken from "app/utils/setAuthorizationToken";
 import {setCurrentUser} from "app/store/actions/user/authetication";
 class Container extends React.Component {
