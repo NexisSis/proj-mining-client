@@ -32,18 +32,20 @@ class Main extends React.Component {
         const hidden = {display: 'none'};
         return (
             <div>
-                <Header path={this.props.location.pathname}/>
-                <Switch>
-                    <Route exact path={"/"} component={Landing}/>
-                    <Route path={"/opportunities"} component={Opportunities}/>
-                    <Route path={"/register"} component={Register}/>
-                    <Route path={"/contact-us"} component={ContactUs}/>
-                    <Route path={"/register-success"} component={RegisterSuccess}/>
-                    <Route path={"/forbidden"} component={Forbidden}/>
-                    <Route path={"/confirmation"} component={Confirmation}/>
-                    <Route path={"/password-confirmation"} component={ResetPasswordConfirmation}/>
-                    <Route component={NoMatch}/>
-                </Switch>
+                <div className={mainStyle["total-container"]}>
+                    <Header path={this.props.location.pathname}/>
+                    <Switch>
+                        <Route exact path={"/"} component={Landing}/>
+                        <Route path={"/opportunities"} component={Opportunities}/>
+                        <Route path={"/register"} component={Register}/>
+                        <Route path={"/contact-us"} component={ContactUs}/>
+                        <Route path={"/register-success"} component={RegisterSuccess}/>
+                        <Route path={"/forbidden"} component={Forbidden}/>
+                        <Route path={"/confirmation"} component={Confirmation}/>
+                        <Route path={"/password-confirmation"} component={ResetPasswordConfirmation}/>
+                        <Route component={NoMatch}/>
+                    </Switch>
+                </div>
                 <Footer/>
                 <LoginModal/>
                 <ResetPasswordModal/>

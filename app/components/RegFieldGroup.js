@@ -3,7 +3,7 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import mainStyle from "app/pages/Main/assets/css/main.css";
 
-const TextFieldGroup = ({field, value, label, type, onChange, error, required}) => {
+const RegFieldGroup = ({field, value, label, type, onChange, error, required}) => {
     const errorClass = isEmpty(error) ? "" : mainStyle["has-error"];
     return (
         <div class={mainStyle["reg-box"]}>
@@ -24,7 +24,7 @@ const TextFieldGroup = ({field, value, label, type, onChange, error, required}) 
     );
 };
 
-TextFieldGroup.propTypes = {
+RegFieldGroup.propTypes = {
     field: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -33,9 +33,9 @@ TextFieldGroup.propTypes = {
     onChange: PropTypes.func.isRequired
 };
 
-TextFieldGroup.defaultProps = {
+RegFieldGroup.defaultProps = {
     type: 'text',
     required: false
 };
 
-export default TextFieldGroup;
+export default RegFieldGroup;

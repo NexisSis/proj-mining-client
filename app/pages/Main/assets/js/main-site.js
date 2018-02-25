@@ -167,15 +167,18 @@ let modals = {};
 modals.init = function () {
     $("body").on("click", function (event) {
         if ($("div." + mainStyle["modal-backdrop"] + '.' + mainStyle.fade + '.' + mainStyle.in).length) {
-            if(!$(event.target).attr("data-target") && !$(event.target).closest(mainStyle.modal).length) {
+            if((!$(event.target).attr("data-target") && !$(event.target).closest("."+mainStyle["modal-dialog"]).length)
+                || (event.type === "submit" && $(event.target).closest("."+mainStyle["modal-dialog"]).length )) {
                 $("div." + mainStyle["modal-backdrop"] + "." +  mainStyle.fade + "." + mainStyle.in).fadeOut().hide().removeClass(mainStyle.in);
                 $("#login").fadeOut().hide().removeClass(mainStyle.in);
                 $("#reset-password").fadeOut().hide().removeClass(mainStyle.in);
+                $("body").removeClass(mainStyle["modal-open"]).removeAttr("style");
             }
         }
     });
 
     $("body").on("click", '[data-target="#login"]', function (event) {
+        $("body").css({"padding-right":"15px"}).addClass(mainStyle["modal-open"]);
         $("#login").fadeIn().show().addClass(mainStyle.in);
         $("div." + mainStyle["modal-backdrop"] + "." +  mainStyle.fade).fadeIn().show().addClass(mainStyle.in);
     });
@@ -183,24 +186,6 @@ modals.init = function () {
         $("#login").fadeOut().hide().removeClass(mainStyle.in);
         $("#reset-password").fadeIn().show().addClass(mainStyle.in);
     });
-
-
-    // $("#reset-password").on("show.bs.modal", function (event) {
-    //     if(event.target.id === "login"){
-    //         $("#login").removeClass("in").addClass(mainStyle.in);
-    //     } else if(event.target.id === "reset-password"){
-    //         $("#login").modal("hide");
-    //         $("#reset-password").removeClass("in").addClass(mainStyle.in);
-    //     }
-    //
-    // });
-    // $("#login, #reset-password").on("hide.bs.modal", function(event) {
-    //     if(event.target.id === "reset-password") {
-    //         $("#reset-password").removeClass(mainStyle.in).fadeOut();
-    //     } else {
-    //         $("#login").fadeOut().removeClass(mainStyle.in);
-    //     }
-    // });
 };
 
 export {menu, page, modals};

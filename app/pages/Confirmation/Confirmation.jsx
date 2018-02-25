@@ -32,6 +32,7 @@ class Confirmation extends React.Component {
     }
 
     parseToken(decodeToken) {
+        //@TODO:FIX A BUG
         decodeToken = decodeURIComponent(decodeURIComponent(this.props.location.search));
         decodeToken = decodeToken.slice(1);
         return qs.parse(decodeToken).token;

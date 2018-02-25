@@ -1,5 +1,5 @@
 import React from "react";
-import TextFieldGroup from "app/utils/components/TextFieldGroup";
+import TextFieldGroup from "app/utils/components/RegFieldGroup";
 import PropTypes from "prop-types";
 import validateInput from "app/utils/components/ValidationSignUp";
 import {Redirect} from "react-router-dom";
