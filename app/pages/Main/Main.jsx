@@ -3,7 +3,7 @@ import {Route, Switch} from "react-router-dom";
 import {Landing} from "app/pages/Landing";
 import {NoMatch} from "app/pages/NoMatch";
 import {Register} from "app/pages/Register";
-import {Header} from "app/pages/Main";
+import Header from "app/pages/Main/components/Header";
 import {Footer} from "app/pages/Main";
 import {ContactUs} from "app/pages/ContactUs";
 import {LoginModal, ResetPasswordModal} from "app/pages/Main/components/";

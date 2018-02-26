@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import mainStyle from "app/pages/Main/assets/css/main.css";
+import {connect} from "react-redux";
 
 class Header extends React.Component {
     constructor(props) {
@@ -23,9 +24,7 @@ class Header extends React.Component {
         this.resolvePath(nextProps.path);
     }
 
-    componentDidMount() {
-
-    }
+    componentDidMount() {}
 
     //REFFACTOR. SET UP HEADER PARAMETERS BY PASSING THROUGH EACH COMPONENT
     resolvePath(path) {
@@ -84,7 +83,7 @@ class Header extends React.Component {
 
 
     onLanguageClick(event) {
-        console.log(event);
+        console.log(event.target);
     }
 
 
@@ -93,6 +92,27 @@ class Header extends React.Component {
         if (this.state.isIndex) {
             clouds = (
                 <div className={mainStyle["header-clouds"]}/>
+            );
+        }
+
+        let buttons;
+        if (this.props.isAuthenticated) {
+            buttons = (
+                <ul className={mainStyle["reg-menu"]}>
+                    <li><Link className={mainStyle.button} to="javascript:void(0)" data-toggle={mainStyle.modal}
+                              data-target="#login" onClick={(e) => e.preventDefault()}>Войти</Link></li>
+                    <li><Link to={'register'}
+                              className={mainStyle.button + ' ' + mainStyle["button--orange"]}>Регистрация</Link>
+                    </li>
+                </ul>
+            );
+        } else {
+            buttons = (
+                <ul className={mainStyle["reg-menu"]}>
+                    <li><Link to={'/cabinet'}
+                              className={mainStyle.button + ' ' + mainStyle["button--orange"]}>Кабинет</Link>
+                    </li>
+                </ul>
             );
         }
 
@@ -149,13 +169,8 @@ class Header extends React.Component {
                                     </ul>
                                 </div>
 
-                                <ul className={mainStyle["reg-menu"]}>
-                                    <li><Link className={mainStyle.button} to="javascript:void(0)" data-toggle={mainStyle.modal}
-                                           data-target="#login" onClick={(e) => e.preventDefault()}>Войти</Link></li>
-                                    <li><Link to={'register'}
-                                              className={mainStyle.button + ' ' + mainStyle["button--orange"]}>Регистрация</Link>
-                                    </li>
-                                </ul>
+                                {buttons}
+
 
                             </div>
 
@@ -179,4 +194,12 @@ class Header extends React.Component {
     }
 }
 
-export {Header};
+function mapStateToProps(state) {
+    console.log(state);
+    return {
+        isAuthenticated: state.authentication.isAuthentificated
+    };
+}
+
+
+export default connect(mapStateToProps, {})(Header);

@@ -26,7 +26,6 @@ class RegisterForm extends React.Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.verifyCallbackRecaptch = this.verifyCallbackRecaptch.bind(this);
-        this.callbackRecaptch = this.callbackRecaptch.bind(this);
         this.injectCountries = this.injectCountries.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -46,56 +45,6 @@ class RegisterForm extends React.Component {
     handleChange(event) {
         console.log(event);
     }
-
-    // fixStyles(dom) {
-    //     $(dom)
-    //         .removeAttr("class")
-    //         .attr("class",
-    //             mainStyle["btn-group"] + " " +
-    //             mainStyle["bootstrap-select"]
-    //         );
-    //
-    //     $(dom).children(":nth-child(1)")
-    //         .removeAttr("class")
-    //         .attr("class",
-    //             mainStyle.btn + " " +
-    //             mainStyle["dropdown-toggle"] + " " +
-    //             mainStyle["dropdown-toggle"] + " " +
-    //             mainStyle["bs-placeholder"] + " " +
-    //             mainStyle["btn-default"]
-    //         );
-    //     $(dom).children(":nth-child(1)")
-    //         .children("span")
-    //         .first()
-    //         .removeAttr("class")
-    //         .attr("class",
-    //             mainStyle["filter-option"] + " " +
-    //             mainStyle["pull-left"] + " "
-    //         );
-    //
-    //     $(dom).children(":nth-child(1)")
-    //         .children("span")
-    //         .last()
-    //         .removeAttr("class")
-    //         .attr("class",
-    //             mainStyle["bs-caret"]
-    //         )
-    //         .child()
-    //         .removeAttr("caret")
-    //         .attr("class",mainStyle["caret"]);
-    //
-    //     $(dom).children(":nth-child(2)")
-    //         .removeAttr("class")
-    //         .attr("class",
-    //             mainStyle["dropdown-menu"] + " " +
-    //             mainStyle["open"]
-    //         )
-    //         .first()
-    //         .removeAttr("class")
-    //         .attr("class");
-    //
-    //
-    // }
 
     isValid() {
         const {errors, isValid} = validateInput((this.state));
@@ -148,7 +97,6 @@ class RegisterForm extends React.Component {
     verifyCallbackRecaptch(response) {
         this.setState({isRecaptch: true});
         console.log('hello from recaptch');
-
     }
 
     render() {
