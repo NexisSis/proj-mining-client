@@ -5,8 +5,8 @@ import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
 export default class ProfileTab extends React.Component{
     render(){
         return (
-            <div class={cabinetStyle["settings-cont"]}>
-                <div class={cabinetStyle["setProfile"]}>
+            <div className={cabinetStyle["settings-cont"]}>
+                <div className={cabinetStyle["setProfile"]}>
                     <InputBox name={'Эл.почта'}/>
                     <InputBox name={'Аватар'} isAvatar={'true'}/>
                     <InputBox name={'Имя'}/>

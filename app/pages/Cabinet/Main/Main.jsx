@@ -11,7 +11,7 @@ import Header from "app/pages/Cabinet/components/Common/Header";
 import {NoMatch} from "app/pages";
 
 import cabinetStyle from "app/pages/Cabinet/assets/css/cabinet.css";
-//import "app/pages/Cabinet/assets/css/libs.css";
+import "app/pages/Cabinet/assets/css/libs.css";
 
 class CabinetMain extends React.Component {
     constructor(props) {
@@ -19,12 +19,12 @@ class CabinetMain extends React.Component {
     }
 
     render() {
-        var mainStyle = {
+        let mainStyle = {
             backgroundColor: 'white',
         };
         const {match} = this.props;
         return (
-            <div class={cabinetStyle["admin-panel"]} style={mainStyle}>
+            <div className={cabinetStyle["admin-panel"]} style={mainStyle}>
                 <Header/>
                 <Switch>
                     <Route exact path={match.url+'/'} component={Panel} />

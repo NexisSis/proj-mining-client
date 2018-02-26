@@ -52,22 +52,13 @@ module.exports = {
                                 "transform-decorators-legacy",
                                 "transform-class-properties",
                                 "transform-react-jsx",
-                                "transform-react-constant-elements"
+                                "transform-react-constant-elements",
+                                "transform-decorators-legacy"
                             ]
                         }
                     }
                 ]
             },
-            // {
-            //     test: require.resolve('react'),
-            //     use: {
-            //         loader: 'imports-loader',
-            //         options: {
-            //             shim: 'es5-shim/es5-shim',
-            //             sham: 'es5-shim/es5-sham',
-            //         },
-            //     }
-            // },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -82,44 +73,9 @@ module.exports = {
                     }
                 })
             },
-            // {
-            //     test: /\.(scss)$/,
-            //     use: [{
-            //         loader: 'style-loader', // inject CSS to page
-            //     }, {
-            //         loader: 'css-loader',
-            //         options: {
-            //             modules: true,
-            //             importLoaders: 1,
-            //             sourceMap: true,
-            //             localIdentName: development ? "[name]__[local]" : "[name]__[local]__[hash:base64:5]",
-            //         },
-            //         // translates CSS into CommonJS modules
-            //     }, {
-            //         loader: 'postcss-loader', // Run post css actions
-            //         options: {
-            //             plugins: function () { // post css plugins, can be exported to postcss.config.js
-            //                 return [
-            //                     require('precss'),
-            //                     require('autoprefixer')
-            //                 ];
-            //             }
-            //         }
-            //     }, {
-            //         loader: 'sass-loader' // compiles Sass to CSS
-            //     }]
-            // },
             {
                 test: /\.(png|gif|jpg|jpeg|webp)$/,
                 use: [
-                    // {
-                    //     loader: "url-loader",
-                    //     options: {
-                    //         limit: 50000,
-                    //         mimetype: "application/octet-stream",
-                    //         fallback: "file-loader"
-                    //     }
-                    // },
                     {
                         loader: "file-loader",
                         options: {
@@ -133,14 +89,6 @@ module.exports = {
             {
                 test: /\.(eot|woff(2)?|ttf|svg)$/,
                 use: [
-                    // {
-                    //     loader: "url-loader",
-                    //     options: {
-                    //         limit: 10000,
-                    //         mimetype: "application/octet-stream",
-                    //         fallback: "file-loader"
-                    //     }
-                    // },
                     {
                         loader: "file-loader",
                         options: {

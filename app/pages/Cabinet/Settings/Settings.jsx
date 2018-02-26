@@ -33,12 +33,12 @@ class Settings extends React.Component {
 
         return (
             <div>
-                <div class={cabinetStyle["content"]}>
+                <div className={cabinetStyle["content"]}>
                     <HeaderTitle name="Настройки"/>
 
-                    <div class={cabinetStyle["settings"]}>
+                    <div className={cabinetStyle["settings"]}>
 
-                        <div class={cabinetStyle["cont"]}>
+                        <div className={cabinetStyle["cont"]}>
 
                             <Tabs selectedTabClassName={cabinetStyle["active"]}>
                                 <TabList className={cabinetStyle["settings-menu"]}>
@@ -62,9 +62,9 @@ class Settings extends React.Component {
 
                             </Tabs>
 
-                            <div class={cabinetStyle["settings-button"]}>
+                            <div className={cabinetStyle["settings-button"]}>
 
-                                <a class={cabinetStyle["button"] + ' ' + cabinetStyle["button--big"]} href="javascript:void(0)">{"Сохранить"}</a>
+                                <a className={cabinetStyle["button"] + ' ' + cabinetStyle["button--big"]} href="javascript:void(0)">{"Сохранить"}</a>
 
                             </div>
 
@@ -73,7 +73,7 @@ class Settings extends React.Component {
                     </div>
 
                 </div>
-                <div class={cabinetStyle["hFooter"]}></div>
+                <div className={cabinetStyle["hFooter"]}></div>
 
             </div>
         );

@@ -4,7 +4,6 @@ import {signin,setCurrentUser} from "app/store/actions/user/authetication";
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import mainStyle from "app/pages/Main/assets/css/main.css";
-import {Link} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import {Redirect} from "react-router-dom";
 import setAuthorizationToken from "app/utils/setAuthorizationToken";
