@@ -8,6 +8,27 @@ import AuthTab from "./components/AuthTab";
 import ChangePassTab from "./components/ChangePassTab";
 import WalletsTab from "./components/WalletsTab";
 class Settings extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={
+            email: '',
+            name: '',
+            surname: '',
+            birthday: '',
+            company: '',
+            companyCode: '',
+            inn: '',
+            address: '',
+            address2: '',
+            city: '',
+            region: '',
+            postIndex: '',
+            errors: {},
+            isCorrectLoading: true,
+            isRedirect: false,
+            serverError: "",
+        };
+    }
     render() {
 
         return (
