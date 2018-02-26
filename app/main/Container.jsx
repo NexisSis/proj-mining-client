@@ -19,7 +19,7 @@ class Container extends React.Component {
     render() {
         if(localStorage.token){
             setAuthorizationToken(localStorage.token);
-            store.dispatch(setCurrentUser({isAuth: true}));
+            store.dispatch(setCurrentUser(true));
         }
 
         return (

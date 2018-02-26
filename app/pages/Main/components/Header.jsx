@@ -9,7 +9,8 @@ class Header extends React.Component {
         this.state = {
             path: props.path,
             isIndex: true,
-            name: 'Облачный майнинг'
+            name: 'Облачный майнинг',
+            isAuth: props.isAuthentificated == true
         };
 
         this.onLanguageClick = this.onLanguageClick.bind(this);
@@ -19,10 +20,11 @@ class Header extends React.Component {
     componentWillMount() {
         this.resolvePath(this.props.path);
     }
-
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps){
         this.resolvePath(nextProps.path);
+        this.setState({isAuth:nextProps.isAuthenticated});
     }
+
 
     componentDidMount() {}
 
@@ -96,7 +98,7 @@ class Header extends React.Component {
         }
 
         let buttons;
-        if (this.props.isAuthenticated) {
+        if (!this.state.isAuth) {
             buttons = (
                 <ul className={mainStyle["reg-menu"]}>
                     <li><Link className={mainStyle.button} to="javascript:void(0)" data-toggle={mainStyle.modal}
@@ -115,7 +117,7 @@ class Header extends React.Component {
                 </ul>
             );
         }
-
+        console.log('header auth ' +this.state.isAuth);
 
         return (
             <header

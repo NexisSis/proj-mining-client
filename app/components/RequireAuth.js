@@ -1,24 +1,33 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
-export default function(ComposedComponent) {
+
+export default function (ComposedComponent) {
     class Authenticate extends React.Component {
-        constructor(){
-            super();
-            this.state={
-                isRedirect:false
+        constructor(props) {
+            super(props);
+            this.state = {
+                isRedirect: false
             };
         }
-        componentWillMount() {
+
+        /*componentWillMount() {
             if (!this.props.isAuthenticated) {
                 this.setState({isRedirect:true});
             }
+        }*/
+        componentWillReceiveProps(nextProps) {
+            console.log('requireAuth next props ' + nextProps);
+            if (!nextProps.isAuthenticated) {
+                this.setState({isRedirect: true});
+            }
         }
+
         render() {
-            if(this.state.isRedirect){
+            if (this.state.isRedirect) {
                 return (
-                    <Redirect to='/forbidden' />
+                    <Redirect to='/forbidden'/>
                 );
             }
             return (
@@ -39,5 +48,6 @@ export default function(ComposedComponent) {
         };
     }
 
-    return  connect(mapStateToProps, {})(Authenticate);
+    return connect(mapStateToProps, {})(Authenticate);
+
 }

@@ -36,7 +36,7 @@ export function logout() {
                 //@TODO: REMOVE TOKEN AND SET STATE USER SIGNOUT
                 localStorage.removeItem('token');
                 setAuthorizationToken(false);
-                dispatch(setCurrentUser({isAuth:false}));
+                dispatch(setCurrentUser(false));
             });
     };
 }

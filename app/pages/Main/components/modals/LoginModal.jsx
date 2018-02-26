@@ -22,7 +22,6 @@ class LoginModal extends React.Component {
             isRecaptch:false
 
         };
-        console.log(this.context);
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.verifyCallbackRecaptch = this.verifyCallbackRecaptch.bind(this);
@@ -48,7 +47,7 @@ class LoginModal extends React.Component {
                     if (response.data.result.token != undefined) {
                         localStorage.setItem('token', response.data.result.token);
                         setAuthorizationToken(response.data.result.token);
-                        setCurrentUser({isAuth: true});
+                        setCurrentUser(true);
                         this.setState({isRedirect:true});
                     } else {
                         console.log('no token from server');
